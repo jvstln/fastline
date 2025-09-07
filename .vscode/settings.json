@@ -1,5 +1,9 @@
 {
-  "prettier.endOfLine": "auto",
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "biomejs.biome"
+	"prettier.endOfLine": "auto",
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "biomejs.biome",
+	"tailwindCSS.classFunctions": ["cva", "cn", "clsx", "tw"],
+	"editor.codeActionsOnSave": {
+		"source.fixAll": "explicit"
+	}
 }

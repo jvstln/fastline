@@ -1,24 +1,38 @@
 import type { Metadata } from "next";
-import { Onest } from "next/font/google";
-import "./globals.css";
+import { Michroma, Onest } from "next/font/google";
 import { cn } from "@/lib/utils";
+import "./globals.css";
 
 const onest = Onest({ subsets: ["latin"], variable: "--font-onest" });
+const michroma = Michroma({
+	subsets: ["latin"],
+	variable: "--font-michroma",
+	weight: "400",
+});
 
 export const metadata: Metadata = {
-  title: "Fastline - Professional Security & Safety Solutions",
-  description:
-    "Experts in security services, compliance audits and professional training, safeguarding assets and ensuring compliance across key sectors in Nigeria.",
+	title: "Fastline - Professional Security & Safety Solutions",
+	description:
+		"Experts in security services, compliance audits and professional training, safeguarding assets and ensuring compliance across key sectors in Nigeria.",
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className={cn(onest.className, "antialiased")}>{children}</body>
-    </html>
-  );
+	return (
+		<html lang="en">
+			<body
+				className={cn(
+					onest.className,
+					michroma.variable,
+					onest.variable,
+					"antialiased",
+				)}
+			>
+				{children}
+			</body>
+		</html>
+	);
 }
