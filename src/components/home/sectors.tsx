@@ -56,32 +56,32 @@ const sectors = [
 
 export const HomepageSectors = () => {
 	return (
-		<section className="py-12">
+		<section className="px-4 py-12">
 			<div className="container mx-auto">
 				<div className="mb-8 flex flex-col items-center gap-2 text-center">
 					<Badge>
 						<IndustryIcon />
 						INDUSTRIES WE SERVE
 					</Badge>
-					<h2 className="flex gap-2 font-bold text-3xl">
+					<h2 className="flex flex-wrap justify-center gap-2 font-bold text-3xl">
 						Trusted Across Multiple{" "}
 						<span className="text-primary">Sectors</span>
 					</h2>
-					<p className="w-[65ch] text-muted-foreground">
+					<p className="max-w-[65ch] text-muted-foreground">
 						We deliver specialized security solutions tailored to the unique
 						operational demands of industries ranging from energy and
 						infrastructure to critical facilities.
 					</p>
 				</div>
 
-				<div className="grid grid-cols-2 justify-center gap-16">
+				<div className="grid justify-center gap-16 md:grid-cols-2">
 					{sectors.map((sector) => {
 						const { title, description, link, iconColors, icon: Icon } = sector;
 
 						return (
 							<div
 								key={title}
-								className="flex w-112 flex-col items-start gap-4 rounded-md border border-slate-100 p-6 shadow-md"
+								className="flex max-w-112 flex-col items-start gap-4 rounded-md border border-slate-100 p-6 shadow-md"
 							>
 								<div
 									className="rounded p-4"

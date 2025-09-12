@@ -89,7 +89,7 @@
   button {
     @apply cursor-pointer;
   }
-  a {
+  a:not([data-not-link], [data-slot]), .link {
     @apply hover:underline hover:decoration-1 hover:underline-offset-3;
   }
 }

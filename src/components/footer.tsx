@@ -47,9 +47,9 @@ const quickLinks = [
 
 export const Footer = () => {
 	return (
-		<footer className="bg-slate-950 py-12 text-sm text-white">
+		<footer className="bg-slate-950 px-4 py-12 text-sm text-white">
 			<div className="container mx-auto">
-				<div className="flex justify-between gap-10">
+				<div className="flex justify-between gap-10 max-md:flex-col">
 					{/* About content */}
 					<div className="flex basis-1/3 flex-col gap-6">
 						<Link href="/">
@@ -104,7 +104,7 @@ export const Footer = () => {
 					</div>
 
 					{/* Quick links */}
-					<div className="flex basis-2/3 justify-between gap-6">
+					<div className="flex basis-2/3 justify-between gap-6 max-md:flex-wrap">
 						{quickLinks.map(({ title, links }) => (
 							<div key={title} className="flex-1">
 								<h2 className="mb-4 text-lg text-primary">{title}</h2>
@@ -127,7 +127,7 @@ export const Footer = () => {
 
 				{/* Copyright */}
 				<hr className="my-8 opacity-50" />
-				<div className="flex items-center gap-4 opacity-70 *:first:mr-auto">
+				<div className="flex items-center gap-4 opacity-70 *:first:mr-auto max-sm:flex-col max-sm:text-center">
 					<p>
 						© 2025 Fastline Integrated Services Limited. All rights reserved.
 					</p>

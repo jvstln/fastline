@@ -50,7 +50,7 @@ const reasons = [
 
 export const HomepageWhyUs = () => {
 	return (
-		<section className="relative bg-slate-950 py-12 text-white">
+		<section className="relative bg-slate-950 px-4 py-12 text-white">
 			<ShieldIcon className="translate-1/2 pointer-events-none absolute right-1/2 bottom-1/2 z-0 grid size-80 place-items-center rounded-full border-4 border-white p-8 opacity-50 blur-sm" />
 
 			<div className="container relative z-10 mx-auto">
@@ -59,11 +59,11 @@ export const HomepageWhyUs = () => {
 						<ShieldQuestionMarkIcon />
 						WHY CHOOSE FASTLINE
 					</Badge>
-					<h2 className="flex gap-2 font-bold text-3xl">
+					<h2 className="flex flex-wrap justify-center gap-2 font-bold text-3xl">
 						Providing <span className="text-primary">High-Value</span>
 						Security <span className="text-primary">Solutions</span>
 					</h2>
-					<p className="w-[65ch] text-muted-foreground">
+					<p className="max-w-[65ch] text-muted-foreground">
 						At Fastline, we&apos;re more than service providers, we&apos;re
 						trusted partners known for delivering reliable protection, tailored
 						strategies, and a firm commitment to safer, more resilient
@@ -71,11 +71,11 @@ export const HomepageWhyUs = () => {
 					</p>
 				</div>
 
-				<div className="mt-8 grid grid-cols-2 justify-items-center gap-8">
+				<div className="mt-8 grid justify-items-center gap-8 md:grid-cols-2">
 					{reasons.map((reason) => {
 						const { title, description, icon: Icon } = reason;
 						return (
-							<div key={title} className="flex w-[40ch] items-start gap-4">
+							<div key={title} className="flex max-w-[40ch] items-start gap-4">
 								<div className="flex-0 rounded bg-white/5 p-4">
 									<Icon className="size-6" />
 								</div>
