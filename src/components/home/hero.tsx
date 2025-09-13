@@ -1,15 +1,9 @@
+import { stats } from "@/lib/data";
 import { cn } from "@/lib/utils";
-import Header from "../header";
+import { Header } from "../header";
 import { ShieldIcon } from "../icons";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
-
-const stats = [
-	{ label: "Industries Served", value: "6+" },
-	{ label: "Certifications", value: "7+" },
-	{ label: "Years of experience", value: "15+" },
-	{ label: "Clients served", value: "50+" },
-];
 
 export const HomepageHero = () => {
 	return (

@@ -11,7 +11,10 @@ const michroma = Michroma({
 });
 
 export const metadata: Metadata = {
-	title: "Fastline - Professional Security & Safety Solutions",
+	title: {
+		template: "%s | Fastline - Professional Security & Safety Solutions",
+		default: "Fastline - Professional Security & Safety Solutions",
+	},
 	description:
 		"Experts in security services, compliance audits and professional training, safeguarding assets and ensuring compliance across key sectors in Nigeria.",
 };

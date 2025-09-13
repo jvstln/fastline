@@ -98,7 +98,7 @@ export const HomepageServices = () => {
 				className="border-slate-900 border-b-40 px-4 pt-12 pb-8 text-center text-white"
 				style={{
 					background:
-						"url(/images/homepage-request-service.png) center center/cover no-repeat",
+						"url(/images/homepage-request-service.jpg) center center/cover no-repeat",
 				}}
 			>
 				<div className="container mx-auto flex flex-col items-center gap-6">

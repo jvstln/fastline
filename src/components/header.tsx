@@ -16,10 +16,17 @@ const links = [
 	{ name: "Contact", href: "/contact" },
 ];
 
-const Header = () => {
+export const Header = () => {
 	const pathname = usePathname();
 	const [open, setOpen] = useState(false);
 	const isMobile = useBreakpoint("max-md");
+
+	const isLinkActive = (href: string) => {
+		return (
+			(pathname.startsWith(href) && href !== "/") ||
+			(pathname === "/" && href === "/")
+		);
+	};
 
 	// Lisen for outside clicks
 	useEffect(() => {
@@ -47,7 +54,7 @@ const Header = () => {
 					</li>
 
 					{links.map((link, i) => {
-						const isActive = pathname.startsWith(link.href);
+						const isActive = isLinkActive(link.href);
 						return (
 							<li
 								key={link.name}
@@ -80,7 +87,7 @@ const Header = () => {
 				{open && (
 					<ul className="absolute flex w-full flex-col bg-black py-2">
 						{links.map((link) => {
-							const isActive = pathname.startsWith(link.href);
+							const isActive = isLinkActive(link.href);
 
 							return (
 								<li key={link.name}>
@@ -103,5 +110,3 @@ const Header = () => {
 		</header>
 	);
 };
-
-export default Header;
