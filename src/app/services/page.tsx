@@ -1,5 +1,5 @@
 import { Footer } from "@/components/footer";
-import { ServicesHero } from "@/components/services/hero";
+import { PageHero } from "@/components/hero";
 import { SecurityOperations } from "@/components/services/security-operations";
 import { TrainingAndCapacityBuilding } from "@/components/services/training";
 
@@ -11,7 +11,7 @@ export const metadata = {
 const ServicesPage = () => {
 	return (
 		<>
-			<ServicesHero />
+			<PageHero title="See how we can help" image="/images/services-hero.jpg" />
 			<SecurityOperations />
 			<TrainingAndCapacityBuilding />
 			<Footer />

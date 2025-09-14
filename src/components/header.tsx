@@ -85,7 +85,7 @@ export const Header = () => {
 
 				{/* Mobile menu */}
 				{open && (
-					<ul className="absolute flex w-full flex-col bg-black py-2">
+					<ul className="absolute flex w-full flex-col border-white/20 border-t bg-black pb-2">
 						{links.map((link) => {
 							const isActive = isLinkActive(link.href);
 

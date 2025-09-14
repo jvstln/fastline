@@ -1,3 +1,12 @@
+import {
+	FacebookIcon,
+	InstagramIcon,
+	LinkedinIcon,
+	MailIcon,
+	MapPinIcon,
+	PhoneIcon,
+	TwitterIcon,
+} from "lucide-react";
 import healthcareImage from "@/public/images/healthcare.png";
 import manufacturingImage from "@/public/images/manufacturing.png";
 import oilAndGasImage from "@/public/images/oil-and-gas.png";
@@ -35,4 +44,29 @@ export const clients = [
 			"Our team supports manufacturers by securing factory floors, warehouses, and logistics zones. We provide perimeter protection, compliance monitoring, and fire safety drills to safeguard workers, machinery, and production operations.",
 		image: manufacturingImage,
 	},
+];
+
+export const contactInfo = [
+	{
+		title: "Location",
+		value: "House 37a, Road 27, Ikota Villa Estate, Lekki, Lagos, Nigeria.",
+		icon: MapPinIcon,
+	},
+	{
+		title: "Phone",
+		value: "+234(0)708-537-5500",
+		icon: PhoneIcon,
+	},
+	{
+		title: "Email",
+		value: "info@fastlinelimited.com",
+		icon: MailIcon,
+	},
+];
+
+export const socialLinks = [
+	{ name: "LinkedIn", href: "https://linkedin.com", icon: LinkedinIcon },
+	{ name: "X", href: "https://x.com", icon: TwitterIcon },
+	{ name: "Facebook", href: "https://facebook.com", icon: FacebookIcon },
+	{ name: "Instagram", href: "https://instagram.com", icon: InstagramIcon },
 ];

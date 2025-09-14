@@ -1,8 +1,8 @@
 import { AboutApproach } from "@/components/about/approach";
 import { AboutClients } from "@/components/about/clients";
 import { AboutCompanyOverview } from "@/components/about/company-overview";
-import { AboutHero } from "@/components/about/hero";
 import { Footer } from "@/components/footer";
+import { PageHero } from "@/components/hero";
 
 export const metadata = {
 	title: "About Us",
@@ -12,7 +12,7 @@ export const metadata = {
 const AboutUsPage = () => {
 	return (
 		<>
-			<AboutHero />
+			<PageHero title="About Us" image="/images/about-hero.jpg" />
 			<AboutCompanyOverview />
 			<AboutApproach />
 			<AboutClients />

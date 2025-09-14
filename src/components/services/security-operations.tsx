@@ -1,3 +1,4 @@
+"use client";
 import {
 	BiohazardIcon,
 	ListChecksIcon,
@@ -6,6 +7,7 @@ import {
 	TelescopeIcon,
 } from "lucide-react";
 import Image from "next/image";
+import { useBreakpoint } from "@/hooks/use-breakpoint";
 import { cn } from "@/lib/utils";
 import monitoringImage from "@/public/images/24-7-monitoring.jpg";
 import riskAndComplianceImage from "@/public/images/risk-and-compliance-solutions-2.png";
@@ -60,8 +62,13 @@ const riskSolutions = [
 ];
 
 export const SecurityOperations = () => {
-	const gridTemplateClassName =
-		"grid-cols-[1rem_1fr_1fr_1fr_1rem] grid-rows-[minmax(auto,1rem)_minmax(auto,1fr)_minmax(auto,1fr)_minmax(auto,1rem)]";
+	const isMobile = useBreakpoint("max-md");
+
+	const boxClassName = "rounded shadow border";
+	const gridTemplateStyles = {
+		gridTemplateColumns: "1rem 1fr 1fr 1fr 1rem",
+		gridTemplateRows: "1rem 1fr auto 1rem",
+	};
 
 	return (
 		<>
@@ -72,7 +79,7 @@ export const SecurityOperations = () => {
 						Security Operations
 					</Badge>
 					<h2 className="font-bold text-3xl">
-						<span className="text-primary">Protection</span>You Can Rely On
+						<span className="text-primary">Protection</span> You Can Rely On
 					</h2>
 					<p className="max-w-[65ch] text-muted-foreground">
 						From trained guards to 24/7 monitoring and rapid emergency response,
@@ -85,15 +92,21 @@ export const SecurityOperations = () => {
 					{operations.map((operation) => (
 						<div
 							key={operation.title}
-							className={cn("grid max-md:max-w-80", gridTemplateClassName)}
+							className={cn("grid max-md:max-w-80", isMobile && boxClassName)}
+							style={gridTemplateStyles}
 						>
 							<div
 								className={cn(
-									"col-[1/-1] row-[1/-1] grid gap-4 rounded border p-4 shadow-md md:row-[2/4] md:self-center",
-									gridTemplateClassName,
+									!isMobile && boxClassName,
+									isMobile
+										? "col-[2/-2] row-[3/4]"
+										: "col-[1/-1] row-[2/3] grid gap-4",
 								)}
+								style={gridTemplateStyles}
 							>
-								<div className="col-[1/-1] row-[3/-1] md:col-[3/-2] md:row-[1/-1]">
+								<div
+									className={cn("col-[3/-1] row-[1/-1]", isMobile && "pt-4")}
+								>
 									<h3 className="mb-2 flex items-center gap-3 font-bold text-lg">
 										<operation.icon className="size-8 rounded bg-primary/5 p-1 text-primary" />
 										{operation.title}
@@ -104,7 +117,10 @@ export const SecurityOperations = () => {
 							<Image
 								src={operation.image}
 								alt={operation.title}
-								className="col-[2/-2] row-[2/3] size-full object-cover md:col-[2/3] md:row-[1/-1]"
+								className={cn(
+									"size-full rounded object-cover",
+									isMobile ? "col-[2/-2] row-[2/3]" : "col-[2/3] row-[1/-1]",
+								)}
 							/>
 						</div>
 					))}

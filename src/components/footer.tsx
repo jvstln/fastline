@@ -1,22 +1,8 @@
-import {
-	FacebookIcon,
-	InstagramIcon,
-	LinkedinIcon,
-	MailIcon,
-	MapPinIcon,
-	PhoneIcon,
-	TwitterIcon,
-} from "lucide-react";
+import { MailIcon, MapPinIcon, PhoneIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { socialLinks } from "@/lib/data";
 import logo from "@/public/logo.svg";
-
-const socialLinks = [
-	{ name: "LinkedIn", href: "https://linkedin.com", icon: LinkedinIcon },
-	{ name: "X", href: "https://x.com", icon: TwitterIcon },
-	{ name: "Facebook", href: "https://facebook.com", icon: FacebookIcon },
-	{ name: "Instagram", href: "https://instagram.com", icon: InstagramIcon },
-];
 
 const serviceLinks = [
 	{ name: "Security Operations", href: "#" },
