@@ -1,24 +1,19 @@
+"use client";
 import {
 	ChevronRightIcon,
 	HospitalIcon,
 	HouseIcon,
 	SettingsIcon,
 } from "lucide-react";
+import { motion } from "motion/react";
 import Image from "next/image";
-import Link from "next/link";
+import { partners } from "@/lib/data";
+import { appearVariants, appearViewport, MotionLink } from "@/lib/motion.util";
+import { cn } from "@/lib/utils";
+import { SectionHeading } from "../hero";
 import { IndustryIcon, OilBarrelIcon } from "../icons";
 import { Badge } from "../ui/badge";
 
-const partners = [
-	{ name: "Arctic Gynae", image: "/images/brands/arcticgynae.png" },
-	{ name: "Axxela", image: "/images/brands/axxela.png" },
-	{ name: "Ceceyara", image: "/images/brands/ceceyara.png" },
-	{ name: "Gaslink", image: "/images/brands/gaslink.png" },
-	{ name: "NNPC", image: "/images/brands/nnpc.png" },
-	{ name: "Oando", image: "/images/brands/oando.png" },
-	{ name: "Technoil", image: "/images/brands/technoil.png" },
-	{ name: "Wissen", image: "/images/brands/wissen.png" },
-];
 const sectors = [
 	{
 		title: "Oil & Gas",
@@ -56,32 +51,48 @@ const sectors = [
 
 export const HomepageSectors = () => {
 	return (
-		<section className="px-4 py-12">
+		<section className="-mt-5">
 			<div className="container mx-auto">
-				<div className="mb-8 flex flex-col items-center gap-2 text-center">
-					<Badge>
-						<IndustryIcon />
-						INDUSTRIES WE SERVE
-					</Badge>
-					<h2 className="flex flex-wrap justify-center gap-2 font-bold text-3xl">
-						Trusted Across Multiple{" "}
-						<span className="text-primary">Sectors</span>
-					</h2>
-					<p className="max-w-[65ch] text-muted-foreground">
-						We deliver specialized security solutions tailored to the unique
+				<SectionHeading
+					title={
+						<>
+							Trusted Across Multiple{" "}
+							<span className="text-primary-light">Sectors</span>
+						</>
+					}
+					subtitle="We deliver specialized security solutions tailored to the unique
 						operational demands of industries ranging from energy and
-						infrastructure to critical facilities.
-					</p>
-				</div>
+						infrastructure to critical facilities."
+					badge={
+						<Badge>
+							<IndustryIcon />
+							INDUSTRIES WE SERVE
+						</Badge>
+					}
+				/>
 
-				<div className="grid justify-center gap-16 md:grid-cols-2">
-					{sectors.map((sector) => {
+				<div className="mt-15 grid justify-center gap-15 md:grid-cols-[repeat(2,auto)] md:gap-20">
+					{sectors.map((sector, i) => {
 						const { title, description, link, iconColors, icon: Icon } = sector;
 
 						return (
-							<div
+							<MotionLink
+								variants={appearVariants}
+								initial="initial"
+								whileInView="animate"
+								viewport={appearViewport}
+								transition={{ delay: i * 0.1 }}
+								href={link.href}
 								key={title}
-								className="flex max-w-112 flex-col items-start gap-4 rounded-md border border-slate-100 p-6 shadow-md"
+								className={cn(
+									"group flex max-w-112.5 flex-col items-start gap-4 rounded-xl p-6 transition-colors duration-500",
+									"from-[#052B8B] to-[#8E008CCC] hover:bg-linear-45 hover:text-white",
+								)}
+								style={{
+									boxShadow:
+										"0px 2px 4px rgba(5, 43, 139, 0.04), 0px 3px 8px rgba(5, 43, 139, 0.16)",
+								}}
+								data-not-link
 							>
 								<div
 									className="rounded p-4"
@@ -93,35 +104,68 @@ export const HomepageSectors = () => {
 								</div>
 								<h4 className="font-bold text-xl">{title}</h4>
 								<p>{description}</p>
-								<Link
-									href={link.href}
-									className="flex gap-2 font-bold text-primary"
-								>
+								<span className="flex gap-2 font-bold text-primary group-hover:hidden">
 									{link.label} <ChevronRightIcon />
-								</Link>
-							</div>
+								</span>
+								<span className="hidden gap-2 font-bold group-hover:flex">
+									Learn more <ChevronRightIcon />
+								</span>
+							</MotionLink>
 						);
 					})}
 				</div>
 
-				<p className="mx-auto mt-12 mb-8 max-w-[66ch] text-center">
+				<motion.p
+					variants={appearVariants}
+					initial="initial"
+					whileInView="animate"
+					className="mx-auto mt-12 mb-8 max-w-[66ch] text-center"
+				>
 					We have a proven track record of delivering meticulous and bespoke
 					solutions backed by a commitment to the highest levels of quality,
 					service and client care.
-				</p>
+				</motion.p>
 
-				<div className="flex justify-center gap-4">
+				<div className="hidden justify-center gap-4 lg:flex">
 					{partners.map((partner) => {
 						const { name, image } = partner;
 						return (
-							<div key={name} className="relative size-16">
+							<div key={name} className="relative size-32">
 								<Image src={image} alt={name} className="object-contain" fill />
 								<span className="sr-only">{name}</span>
 							</div>
 						);
 					})}
 				</div>
+
+				<PartnersMarquee />
 			</div>
 		</section>
+	);
+};
+
+const PartnersMarquee = () => {
+	return (
+		<div className="relative w-full overflow-hidden bg-gray-100 py-6 lg:hidden">
+			<motion.div
+				className="flex gap-6"
+				animate={{ x: ["0%", "-100%"] }}
+				transition={{
+					repeat: Number.POSITIVE_INFINITY,
+					duration: 20, // ⏱ adjust speed
+					ease: "linear",
+				}}
+			>
+				{/* Duplicate the images twice for seamless looping */}
+				{[...partners, ...partners].map((partner, i) => (
+					<Image
+						key={partner.name + String(i)}
+						src={partner.image}
+						alt={partner.name}
+						className="h-16 w-auto shrink-0 rounded-lg object-cover shadow-md"
+					/>
+				))}
+			</motion.div>
+		</div>
 	);
 };

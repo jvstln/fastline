@@ -33,11 +33,11 @@ const quickLinks = [
 
 export const Footer = () => {
 	return (
-		<footer className="bg-slate-950 px-4 py-12 text-sm text-white">
+		<footer className="bg-neutral-950 px-4 pt-15 pb-16 text-white">
 			<div className="container mx-auto">
-				<div className="flex justify-between gap-10 max-md:flex-col">
+				<div className="flex justify-between gap-15 max-lg:flex-col lg:gap-8">
 					{/* About content */}
-					<div className="flex basis-1/3 flex-col gap-6">
+					<div className="flex max-w-143 shrink-0 flex-col gap-8 lg:w-87">
 						<Link href="/">
 							<Image src={logo} alt="Logo" />
 						</Link>
@@ -49,7 +49,7 @@ export const Footer = () => {
 
 						{/* Location */}
 						<div>
-							<h3 className="mb-1 flex items-center gap-2 opacity-70">
+							<h3 className="mb-2 flex items-center gap-1.5 opacity-50">
 								<MapPinIcon className="size-4" /> Location
 							</h3>
 							<p>
@@ -59,7 +59,7 @@ export const Footer = () => {
 
 						{/* Phone */}
 						<div>
-							<h3 className="mb-1 flex items-center gap-2 opacity-70">
+							<h3 className="mb-2 flex items-center gap-1.5 opacity-50">
 								<PhoneIcon className="size-4" /> Phone number
 							</h3>
 							<p>+234(0)708-537-5500</p>
@@ -67,14 +67,14 @@ export const Footer = () => {
 
 						{/* Email */}
 						<div>
-							<h3 className="mb-1 flex items-center gap-2 opacity-70">
+							<h3 className="mb-2 flex items-center gap-1.5 opacity-50">
 								<MailIcon className="size-4" /> Email
 							</h3>
 							<p>info@fastlinelimited.com</p>
 						</div>
 
 						{/* Social links */}
-						<div className="flex justify-between gap-4 text-primary">
+						<div className="flex w-78 justify-between gap-4 text-primary">
 							{socialLinks.map((link) => (
 								<Link
 									key={link.name}
@@ -90,16 +90,18 @@ export const Footer = () => {
 					</div>
 
 					{/* Quick links */}
-					<div className="flex basis-2/3 justify-between gap-6 max-md:flex-wrap">
+					<div className="flex max-w-165 justify-between gap-15 max-md:flex-wrap md:gap-4">
 						{quickLinks.map(({ title, links }) => (
-							<div key={title} className="flex-1">
-								<h2 className="mb-4 text-lg text-primary">{title}</h2>
-								<ul className="space-y-4">
+							<div key={title} className="min-w-16">
+								<h2 className="mb-6 font-semibold text-[#3389FF] text-lg">
+									{title}
+								</h2>
+								<ul className="space-y-6">
 									{links.map((link) => (
 										<li key={link.name}>
 											<Link
 												href={link.href}
-												className="opacity-70 hover:opacity-100"
+												className="opacity-50 hover:opacity-100"
 											>
 												{link.name}
 											</Link>
@@ -111,14 +113,16 @@ export const Footer = () => {
 					</div>
 				</div>
 
+				<hr className="my-10 border-b-2 opacity-10" />
 				{/* Copyright */}
-				<hr className="my-8 opacity-50" />
-				<div className="flex items-center gap-4 opacity-70 *:first:mr-auto max-sm:flex-col max-sm:text-center">
-					<p>
+				<div className="flex items-center justify-between gap-4 max-sm:flex-col max-sm:text-center">
+					<p className="opacity-40">
 						© 2025 Fastline Integrated Services Limited. All rights reserved.
 					</p>
-					<Link href="/privacy-policy">Privacy Policy</Link>
-					<Link href="/terms-of-service">Terms of Service</Link>
+					<div className="flex items-center justify-around gap-10 opacity-50">
+						<Link href="/privacy-policy">Privacy Policy</Link>
+						<Link href="/terms-of-service">Terms of Service</Link>
+					</div>
 				</div>
 			</div>
 		</footer>

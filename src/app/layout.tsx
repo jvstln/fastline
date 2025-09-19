@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Michroma, Onest } from "next/font/google";
 import { cn } from "@/lib/utils";
 import "./globals.css";
+import { RootProviders } from "@/components/providers";
 
 const onest = Onest({ subsets: ["latin"], variable: "--font-onest" });
 const michroma = Michroma({
@@ -34,7 +35,7 @@ export default function RootLayout({
 					"antialiased",
 				)}
 			>
-				{children}
+				<RootProviders>{children}</RootProviders>
 			</body>
 		</html>
 	);

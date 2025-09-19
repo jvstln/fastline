@@ -1,63 +1,100 @@
+"use client";
+import { motion } from "motion/react";
+import Image from "next/image";
+import Link from "next/link";
 import { stats } from "@/lib/data";
-import { cn } from "@/lib/utils";
+import homepageHeroImage from "@/public/images/homepage-hero.png";
 import { Header } from "../header";
 import { ShieldIcon } from "../icons";
-import { Badge } from "../ui/badge";
+import { MotionBadge } from "../ui/badge";
 import { Button } from "../ui/button";
+
+const MotionImage = motion(Image);
+
+const heroContentVariants = {
+	initial: (custom: number) => ({ opacity: 0, y: (custom + 1) * 30 }),
+	animate: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+};
 
 export const HomepageHero = () => {
 	return (
-		<div
-			className="flex min-h-screen flex-col text-white"
-			style={{
-				background: `url('/images/homepage-hero.png') no-repeat center center/cover`,
-			}}
-		>
-			<Header />
-			{/* Hero content */}
-			<div
-				className={cn(
-					"container m-auto flex items-center justify-between px-4 py-6",
-					"max-lg:flex-col max-lg:gap-10",
-				)}
-			>
-				<div className="flex max-w-[60ch] basis-1/2 flex-col gap-4 max-lg:items-center max-lg:text-center">
-					<Badge variant="secondary">
-						<ShieldIcon />
-						FASTLINE INTEGRATED SERVICES LTD
-					</Badge>
-					<h1 className="font-bold text-4xl md:text-5xl lg:text-6xl">
-						Professional <span className="text-primary">Security</span> &{" "}
-						<span className="text-primary">Safety</span> Solutions
-					</h1>
-					<p className="max-w-[60ch] text-sm">
-						Experts in security services, compliance audits and professional
-						training, safeguarding assets and ensuring compliance across key
-						sectors in Nigeria.
-					</p>
-					<div className="flex gap-4">
-						<Button>Request service</Button>
-						<Button variant="secondary">Message us</Button>
-					</div>
-				</div>
-
-				{/* Hero cards */}
-				<div
-					className={cn(
-						"basis-1/2 lg:grid lg:grid-cols-2 lg:justify-items-center xl:gap-12",
-						"flex flex-wrap gap-6",
-					)}
+		<div className="relative flex h-299 flex-col overflow-hidden text-white md:h-218.75 lg:h-193.75">
+			<MotionImage
+				src={homepageHeroImage}
+				initial={{ scale: 1.2 }}
+				animate={{ scale: 1 }}
+				alt=""
+				className="-z-10 absolute inset-0 size-full object-cover max-md:object-[75%]"
+			/>
+			<Header showRequestServiceButton={false} />
+			<div className="my-auto px-4">
+				<motion.div
+					initial="initial"
+					animate="animate"
+					className="container mx-auto flex items-center justify-between max-lg:flex-col max-lg:gap-10"
 				>
-					{stats.map((stat) => (
-						<div
-							key={stat.label + stat.value}
-							className="flex grow flex-col items-center justify-center gap-2 rounded-md border bg-white/5 p-4 backdrop-blur-xs lg:h-30 lg:w-50"
+					{/* Hero content */}
+					<motion.div
+						variants={heroContentVariants}
+						custom={1}
+						className="flex max-w-137.5 basis-1/2 flex-col gap-8 max-lg:items-center max-lg:text-center md:gap-6"
+					>
+						<MotionBadge
+							variants={heroContentVariants}
+							custom={1}
+							variant="secondary"
 						>
-							<span className="font-bold font-michroma">{stat.value}</span>
-							<span>{stat.label}</span>
-						</div>
-					))}
-				</div>
+							<ShieldIcon />
+							FASTLINE INTEGRATED SERVICES LTD
+						</MotionBadge>
+						<motion.h1
+							variants={heroContentVariants}
+							custom={2}
+							className="font-bold text-5xl md:text-[54px] lg:text-6xl"
+						>
+							Professional <span className="text-primary-light">Security</span>{" "}
+							& <span className="text-primary-light">Safety</span> Solutions
+						</motion.h1>
+						<motion.p
+							variants={heroContentVariants}
+							custom={3}
+							className="max-w-[60ch] text-xl"
+						>
+							Experts in security services, compliance audits and professional
+							training, safeguarding assets and ensuring compliance across key
+							sectors in Nigeria.
+						</motion.p>
+						<motion.div
+							variants={heroContentVariants}
+							custom={4}
+							className="mt-15 flex gap-4 self-stretch *:flex-1 max-md:mb-15 lg:mt-16"
+						>
+							<Button asChild>
+								<Link href="/request-service">Request service</Link>
+							</Button>
+							<Button variant="secondary" asChild>
+								<Link href="#contact-form">Message us</Link>
+							</Button>
+						</motion.div>
+					</motion.div>
+					{/* Hero cards */}
+					<div className="flex flex-wrap gap-4 text-center max-lg:justify-between max-lg:self-stretch lg:grid lg:grid-cols-2 lg:gap-20">
+						{stats.map((stat, i) => (
+							<motion.div
+								initial={{ opacity: 0, scale: 0.3 }}
+								animate={{ opacity: 1, scale: 1 }}
+								transition={{ delay: 0.1 * i }}
+								key={stat.label + stat.value}
+								className="flex w-42.5 flex-col items-center justify-center gap-2 rounded-md border bg-white/5 p-4 py-8 backdrop-blur-xs max-md:h-27.5 max-md:grow lg:h-30 lg:w-52.5"
+							>
+								<span className="font-bold font-michroma text-2xl">
+									{stat.value}
+								</span>
+								<span className="text-lg">{stat.label}</span>
+							</motion.div>
+						))}
+					</div>
+				</motion.div>
 			</div>
 		</div>
 	);

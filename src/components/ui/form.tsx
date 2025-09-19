@@ -2,6 +2,7 @@
 
 import type * as LabelPrimitive from "@radix-ui/react-label";
 import { Slot } from "@radix-ui/react-slot";
+import { motion } from "motion/react";
 import * as React from "react";
 import {
 	Controller,

@@ -1,10 +1,12 @@
 "use client";
-import Image from "next/image";
+import { motion } from "motion/react";
 import Link from "next/link";
 import { useBreakpoint } from "@/hooks/use-breakpoint";
+import { appearVariants, MotionButton, MotionImage } from "@/lib/motion.util";
 import riskAndComplianceImage from "@/public/images/risk-and-compliance-solutions.png";
 import securityOperationsImage from "@/public/images/security-operations.png";
 import trainingAndCapacityBuildingImage from "@/public/images/training-and-capacity-building.png";
+import { SectionHeading } from "../hero";
 import { DoubleCogIcon, ShieldIcon } from "../icons";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
@@ -38,83 +40,102 @@ export const HomepageServices = () => {
 
 	return (
 		<>
-			<section className="px-4 py-12">
+			<section className="">
 				<div className="container mx-auto">
-					<div className="mb-8 flex flex-col items-center gap-2 text-center">
-						<Badge>
-							<DoubleCogIcon />
-							OUR SERVICES
-						</Badge>
-						<h2 className="flex flex-wrap justify-center gap-2 font-bold text-3xl">
-							Protective
-							<span className="text-primary">Services </span>
-							That Go
-							<span className="text-primary">Beyond Guarding</span>
-						</h2>
-						<p className="max-w-[65ch] text-muted-foreground">
-							From security guard services to safety trainings, we provide
-							tailored solutions to protect your various business across
-							multiple sectors.
-						</p>
-					</div>
+					<SectionHeading
+						title={
+							<>
+								Protective
+								<span className="text-primary">Services </span>
+								That Go
+								<span className="text-primary">Beyond Guarding</span>
+							</>
+						}
+						subtitle="From security guard services to safety trainings, we provide tailored solutions to protect your various business across multiple sectors."
+						badge={
+							<Badge>
+								<DoubleCogIcon />
+								OUR SERVICES
+							</Badge>
+						}
+					/>
 
-					<div className="flex flex-col gap-6">
+					<div className="-mb-20 mt-16 flex flex-col gap-20 md:gap-2">
 						{services.map((service, i) => {
 							const image = (
-								<Image
+								<MotionImage
+									variants={appearVariants}
 									src={service.image}
 									alt={service.title}
-									className="mx-auto h-auto w-full object-contain max-md:size-80"
+									className="max-md:-mb-10 mx-auto h-auto w-113 object-contain"
 								/>
 							);
 							const content = (
-								<div className="flex flex-col items-start gap-4 text-justify lg:col-span-2">
-									<h3 className="text-left font-semibold text-2xl">
+								<motion.div className="flex flex-col items-start text-justify">
+									<motion.h3
+										variants={appearVariants}
+										className="mb-3 text-left font-semibold text-xl"
+									>
 										{service.title}
-									</h3>
-									<p>{service.description}</p>
-									<Button asChild>
+									</motion.h3>
+									<motion.p variants={appearVariants} className="mb-8">
+										{service.description}
+									</motion.p>
+									<MotionButton variants={appearVariants} asChild>
 										<Link href={service.link}>Explore Services</Link>
-									</Button>
-								</div>
+									</MotionButton>
+								</motion.div>
 							);
 
 							const shouldFlip = i % 2 !== 0 && !isTablet;
 
 							return (
-								<div
+								<motion.div
+									whileInView="animate"
+									initial="initial"
+									viewport={{ amount: 0.2, once: true }}
 									key={service.title}
-									className="grid items-center gap-6 md:grid-cols-2 lg:grid-cols-3"
+									className="flex items-center gap-10 max-md:flex-col lg:gap-15"
 								>
 									{shouldFlip ? content : image}
 									{shouldFlip ? image : content}
-								</div>
+								</motion.div>
 							);
 						})}
 					</div>
 				</div>
 			</section>
+
 			<section
-				className="border-slate-900 border-b-40 px-4 pt-12 pb-8 text-center text-white"
+				className="relative bg-cover text-center text-white"
 				style={{
 					background:
-						"url(/images/homepage-request-service.jpg) center center/cover no-repeat",
+						"url(/images/homepage-request-service.jpg) center center/cover no-repeat fixed",
 				}}
 			>
-				<div className="container mx-auto flex flex-col items-center gap-6">
-					<Badge variant="secondary">
-						<ShieldIcon />
-						Trusted Security Partner
-					</Badge>
-					<h3 className="text-3xl">
-						End-to-End Protection Tailored Just For You
-					</h3>
-					<p className="max-w-[60ch]">
-						With over 15 years of experience in security industry, we have
+				<div className="container mx-auto flex flex-col items-center">
+					<SectionHeading
+						title={
+							<>
+								End-to-End
+								<span className="text-primary"> Protection </span>
+								Tailored Just For You
+							</>
+						}
+						subtitle="With over 15 years of experience in security industry, we have
 						earned the trust of clients across Nigeria through unwavering
-						dedication to excellence.
-					</p>
-					<Button>Request Service</Button>
+						dedication to excellence."
+						badge={
+							<Badge variant="secondary">
+								<ShieldIcon />
+								Trusted Security Partner
+							</Badge>
+						}
+						classNames={{ root: "max-w-161.5 mb-20" }}
+					/>
+					<Button size="lg" className="w-75">
+						Request Service
+					</Button>
 				</div>
 			</section>
 		</>

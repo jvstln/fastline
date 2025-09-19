@@ -29,33 +29,41 @@
   --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --radius-sm: calc(var(--radius) - 4px);
+
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+
+  /* --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 4px); */
 
   --font-onest: var(--font-onest);
   --font-michroma: var(--font-michroma);
+
+  --breakpoint-xl: 75rem;
+  --breakpoint-md: 52.5rem;
 }
 
 :root {
-  --radius: 0.625rem;
+  /* --radius: 0.625; */
   --background: #F4F7FB;
   --foreground: oklch(0.129 0.042 264.695);
+  --primary: #052B8B;
+  --primary-light: #073DC5;
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: #052B8B;
+
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: #052B8B;
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: #052B8B;
   --muted: oklch(0.968 0.007 247.896);
   --muted-foreground: oklch(0.554 0.046 257.417);
   --accent: oklch(0.968 0.007 247.896);
@@ -84,12 +92,15 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground scroll-smooth;
   }
   button {
     @apply cursor-pointer;
   }
   a:not([data-not-link], [data-slot]), .link {
     @apply hover:underline hover:decoration-1 hover:underline-offset-3;
+  }
+  section {
+    @apply py-25 px-4;
   }
 }

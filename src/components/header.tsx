@@ -1,5 +1,6 @@
 "use client";
-import { MenuIcon } from "lucide-react";
+import { MenuIcon, XIcon } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -16,10 +17,25 @@ const links = [
 	{ name: "Contact", href: "/contact" },
 ];
 
-export const Header = () => {
+const fadeInVariants = {
+	initial: {
+		height: 0,
+		opacity: 0,
+	},
+	animate: {
+		height: "auto",
+		opacity: 1,
+	},
+};
+
+export const Header = ({
+	showRequestServiceButton = true,
+}: {
+	showRequestServiceButton?: boolean;
+}) => {
 	const pathname = usePathname();
 	const [open, setOpen] = useState(false);
-	const isMobile = useBreakpoint("max-md");
+	const isMobile = useBreakpoint("max-lg");
 
 	const isLinkActive = (href: string) => {
 		return (
@@ -44,58 +60,32 @@ export const Header = () => {
 	}, []);
 
 	return (
-		<header className={cn("relative z-30", open && isMobile && "bg-black")}>
-			<nav data-slot="header-nav">
-				<ul className="container mx-auto flex h-20 items-center gap-8 p-4">
-					<li>
+		<header
+			className={cn(
+				"relative z-30 bg-black/5",
+				open && isMobile && "bg-black/80",
+			)}
+		>
+			<nav data-slot="header-nav" className="px-4">
+				<ul className="container mx-auto flex h-20 justify-between gap-8 py-3">
+					<li className="self-center">
 						<Link href="/">
 							<Image src={logo} alt="Fastline Logo" />
 						</Link>
 					</li>
 
-					{links.map((link, i) => {
-						const isActive = isLinkActive(link.href);
-						return (
-							<li
-								key={link.name}
-								className={cn("max-md:hidden", i === 0 && "ml-auto")}
-							>
-								<Link
-									href={link.href}
-									className={cn(
-										"text-sm",
-										isActive
-											? "font-bold underline decoration-2 underline-offset-3"
-											: "opacity-60 hover:underline hover:decoration-1 hover:underline-offset-3",
-									)}
-								>
-									{link.name}
-								</Link>
-							</li>
-						);
-					})}
-
-					{/* Mobile menu trigger */}
-					<li className="ml-auto md:hidden">
-						<Button size="icon" variant="ghost" onClick={() => setOpen(!open)}>
-							<MenuIcon />
-						</Button>
-					</li>
-				</ul>
-
-				{/* Mobile menu */}
-				{open && (
-					<ul className="absolute flex w-full flex-col border-white/20 border-t bg-black pb-2">
+					<ul className="flex gap-3">
 						{links.map((link) => {
 							const isActive = isLinkActive(link.href);
-
 							return (
-								<li key={link.name}>
+								<li key={link.name} className="flex max-lg:hidden">
 									<Link
 										href={link.href}
 										className={cn(
-											"block px-6 py-4 hover:bg-white/10",
-											isActive && "bg-white/10",
+											"flex items-center px-5",
+											isActive
+												? "font-bold underline decoration-2 underline-offset-3"
+												: "opacity-60 hover:font-bold hover:opacity-100",
 										)}
 										data-not-link
 									>
@@ -104,8 +94,64 @@ export const Header = () => {
 								</li>
 							);
 						})}
+						{showRequestServiceButton && (
+							<li className="flex items-center max-lg:hidden">
+								<Button size="sm" asChild>
+									<Link href="/request-service">Request Service</Link>
+								</Button>
+							</li>
+						)}
 					</ul>
-				)}
+
+					{/* Mobile menu trigger */}
+					<li className="ml-auto lg:hidden">
+						<button
+							type="button"
+							className="p-4 transition-transform active:scale-90"
+							onClick={() => setOpen(!open)}
+						>
+							{open ? <XIcon /> : <MenuIcon />}
+						</button>
+					</li>
+				</ul>
+
+				{/* Mobile menu */}
+				<AnimatePresence>
+					{open && (
+						<motion.ul
+							initial="initial"
+							animate="animate"
+							exit="initial"
+							variants={fadeInVariants}
+							className="-mx-4 absolute flex w-full flex-col overflow-hidden border-white/20 border-t bg-black/80"
+						>
+							{links.map((link) => {
+								const isActive = isLinkActive(link.href);
+								return (
+									<li key={link.name}>
+										<Link
+											href={link.href}
+											className={cn(
+												"block px-6 py-4 hover:bg-white/10",
+												isActive && "bg-white/10",
+											)}
+											data-not-link
+										>
+											{link.name}
+										</Link>
+									</li>
+								);
+							})}
+							{showRequestServiceButton && (
+								<li className="block px-6 py-4 hover:bg-white/10">
+									<Button size="sm" asChild>
+										<Link href="/request-service">Request Service</Link>
+									</Button>
+								</li>
+							)}
+						</motion.ul>
+					)}
+				</AnimatePresence>
 			</nav>
 		</header>
 	);

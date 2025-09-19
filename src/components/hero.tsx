@@ -1,3 +1,6 @@
+"use client";
+import { motion, stagger } from "motion/react";
+import { appearVariants, appearViewport } from "@/lib/motion.util";
 import { cn } from "@/lib/utils";
 import { Header } from "./header";
 import { ShieldIcon } from "./icons";
@@ -46,5 +49,44 @@ export const PageHero = (props: PageHeroProps) => {
 				</div>
 			</div>
 		</div>
+	);
+};
+
+type SectionHeadingProps = {
+	title?: React.ReactNode;
+	subtitle?: string;
+	badge?: React.ReactNode;
+	classNames?: Partial<Record<"root" | "title" | "subtitle" | "badge", string>>;
+};
+export const SectionHeading = (props: SectionHeadingProps) => {
+	return (
+		<motion.div
+			variants={appearVariants}
+			initial="initial"
+			whileInView="animate"
+			viewport={appearViewport}
+			transition={{ delayChildren: stagger(0.1) }}
+			className={cn(
+				"mx-auto flex max-w-160.5 flex-col items-center text-center lg:max-w-180.5",
+				props.classNames?.root,
+			)}
+		>
+			<motion.div variants={appearVariants}>{props.badge}</motion.div>
+			<motion.h2
+				variants={appearVariants}
+				className={cn(
+					"mt-5 mb-3 flex flex-wrap justify-center gap-2 font-bold text-[2rem]",
+					props.classNames?.title,
+				)}
+			>
+				{props.title}
+			</motion.h2>
+			<motion.p
+				variants={appearVariants}
+				className={cn("text-lg opacity-60", props.classNames?.subtitle)}
+			>
+				{props.subtitle}
+			</motion.p>
+		</motion.div>
 	);
 };

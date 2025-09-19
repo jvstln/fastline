@@ -7,6 +7,14 @@ import {
 	PhoneIcon,
 	TwitterIcon,
 } from "lucide-react";
+import arcticGynaeImage from "@/public/images/brands/arcticgynae.png";
+import axxelaImage from "@/public/images/brands/axxela.png";
+import ceceyaraImage from "@/public/images/brands/ceceyara.png";
+import gaslinkImage from "@/public/images/brands/gaslink.png";
+import nnpcImage from "@/public/images/brands/nnpc.png";
+import oandoImage from "@/public/images/brands/oando.png";
+import technoilImage from "@/public/images/brands/technoil.png";
+import wissenImage from "@/public/images/brands/wissen.png";
 import healthcareImage from "@/public/images/healthcare.png";
 import manufacturingImage from "@/public/images/manufacturing.png";
 import oilAndGasImage from "@/public/images/oil-and-gas.png";
@@ -69,4 +77,15 @@ export const socialLinks = [
 	{ name: "X", href: "https://x.com", icon: TwitterIcon },
 	{ name: "Facebook", href: "https://facebook.com", icon: FacebookIcon },
 	{ name: "Instagram", href: "https://instagram.com", icon: InstagramIcon },
+];
+
+export const partners = [
+	{ name: "Arctic Gynae", image: arcticGynaeImage },
+	{ name: "Axxela", image: axxelaImage },
+	{ name: "Ceceyara", image: ceceyaraImage },
+	{ name: "Gaslink", image: gaslinkImage },
+	{ name: "NNPC", image: nnpcImage },
+	{ name: "Oando", image: oandoImage },
+	{ name: "Technoil", image: technoilImage },
+	{ name: "Wissen", image: wissenImage },
 ];
