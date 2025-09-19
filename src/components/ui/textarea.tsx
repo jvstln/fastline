@@ -13,6 +13,7 @@ function Textarea({ className, ...props }: React.ComponentProps<"textarea">) {
 				inputColorClassName,
 				className,
 			)}
+			rows={5}
 			{...props}
 		/>
 	);
