@@ -1,6 +1,11 @@
 "use client";
 import { MenuIcon, XIcon } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import {
+	AnimatePresence,
+	motion,
+	useMotionValueEvent,
+	useScroll,
+} from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -29,8 +34,10 @@ const fadeInVariants = {
 	},
 };
 
+const HEADER_HEIGHT = 80;
+
 export const Header = ({
-	showRequestServiceButton = true,
+	showRequestServiceButton: _showRequestServiceButton = true,
 	mode = "dark",
 }: {
 	showRequestServiceButton?: boolean;
@@ -39,13 +46,11 @@ export const Header = ({
 	const pathname = usePathname();
 	const [open, setOpen] = useState(false);
 	const isMobile = useBreakpoint("max-lg");
-
-	const isLinkActive = (href: string) => {
-		return (
-			(pathname.startsWith(href) && href !== "/") ||
-			(pathname === "/" && href === "/")
-		);
-	};
+	const { scrollY } = useScroll();
+	const [scrollStatus, setScrollStatus] = useState<{
+		direction: "up" | "down";
+		isInView: boolean;
+	}>({ direction: "down", isInView: true });
 
 	// Lisen for outside clicks
 	useEffect(() => {
@@ -62,16 +67,53 @@ export const Header = ({
 		return () => document.removeEventListener("click", handler);
 	}, []);
 
+	useMotionValueEvent(scrollY, "change", (latest) => {
+		const previous = scrollY.getPrevious();
+		const isInView = latest < HEADER_HEIGHT;
+
+		if (!previous || isInView === scrollStatus.isInView) return;
+
+		setScrollStatus((prev) => {
+			return {
+				...prev,
+				direction: latest - previous > 0 ? "down" : "up",
+				isInView,
+			};
+		});
+
+		console.log("in view", isInView, latest - previous > 0 ? "down" : "up");
+	});
+
+	const isLinkActive = (href: string) => {
+		return (
+			(pathname.startsWith(href) && href !== "/") ||
+			(pathname === "/" && href === "/")
+		);
+	};
+
+	const showRequestServiceButton =
+		_showRequestServiceButton || !scrollStatus.isInView;
+
 	return (
-		<header
+		<motion.header
 			className={cn(
-				"relative z-30",
+				"z-30 w-full",
 				mode === "dark" ? "bg-black/5" : "bg-white",
 				open && isMobile && (mode === "dark" ? "bg-black/80" : "bg-white/80"),
+				scrollStatus.isInView
+					? "relative"
+					: cn(
+							"-translate-y-full fixed backdrop-blur-xs",
+							mode === "dark" ? "bg-black/80" : "bg-white/80",
+						),
 			)}
+			animate={{ y: scrollStatus.isInView ? 0 : "100%" }}
 		>
 			<nav data-slot="header-nav" className="px-4">
-				<ul className="container mx-auto flex h-20 justify-between gap-8 py-3">
+				<ul
+					className="container mx-auto flex justify-between gap-8 py-3"
+					style={{ height: HEADER_HEIGHT }}
+				>
 					<li className="self-center">
 						<Link href="/">
 							<Image
@@ -131,7 +173,7 @@ export const Header = ({
 							exit="initial"
 							variants={fadeInVariants}
 							className={cn(
-								"-mx-4 absolute flex w-full flex-col overflow-hidden border-white/20 border-t",
+								"-mx-4 absolute flex w-full flex-col overflow-hidden border-white/20 border-t backdrop-blur-xs",
 								mode === "dark" ? "bg-black/80" : "bg-white/80",
 							)}
 						>
@@ -172,6 +214,6 @@ export const Header = ({
 					)}
 				</AnimatePresence>
 			</nav>
-		</header>
+		</motion.header>
 	);
 };

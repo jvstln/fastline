@@ -98,7 +98,7 @@ export const SectionHeading = (props: SectionHeadingProps) => {
 			<motion.h2
 				variants={appearVariants}
 				className={cn(
-					"mt-5 mb-3 font-bold text-[2rem]",
+					"mt-5 mb-3 font-bold text-[1.75rem] md:text-[2rem]",
 					props.classNames?.title,
 				)}
 			>
@@ -106,7 +106,7 @@ export const SectionHeading = (props: SectionHeadingProps) => {
 			</motion.h2>
 			<motion.p
 				variants={appearVariants}
-				className={cn("text-lg opacity-60", props.classNames?.subtitle)}
+				className={cn("opacity-60 md:text-lg", props.classNames?.subtitle)}
 			>
 				{props.subtitle}
 			</motion.p>
