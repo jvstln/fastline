@@ -3,7 +3,7 @@ import type * as React from "react";
 import { cn } from "@/lib/utils";
 
 export const inputSizeClassName = cn("h-15 rounded p-4");
-export const inputColorClassName = cn("bg-primary/5");
+export const inputColorClassName = cn("bg-[#073DC5]/5");
 
 function Input({ className, type, ...props }: React.ComponentProps<"input">) {
 	return (

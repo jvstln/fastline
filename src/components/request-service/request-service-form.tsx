@@ -1,6 +1,7 @@
 "use client";
 import { ScrollTextIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { Button } from "../ui/button";
 import {
 	Form,
 	FormControl,
@@ -38,9 +39,9 @@ export const RequestServiceForm = () => {
 
 	return (
 		<Form {...form}>
-			<form className="mx-auto flex max-w-lg flex-col gap-6">
-				<div className="-mt-40 flex flex-col items-center bg-background p-15 text-center">
-					<ScrollTextIcon className="size-24 text-primary" />
+			<form className="flex flex-col gap-10">
+				<div className="mx-auto flex max-w-149.5 flex-col items-center gap-1 bg-background text-center">
+					<ScrollTextIcon className="size-15.5 text-primary" />
 					<h2 className="font-semibold text-2xl">Request Service</h2>
 					<p>
 						Fill out the form with your details, our team will review your
@@ -49,7 +50,7 @@ export const RequestServiceForm = () => {
 					</p>
 				</div>
 
-				<div className="flex flex-col gap-6">
+				<div className="flex flex-col gap-8">
 					<FormField
 						name="name"
 						render={({ field }) => (
@@ -115,11 +116,17 @@ export const RequestServiceForm = () => {
 										</FormControl>
 										<SelectContent>
 											<SelectItem value="oil-gas">Oil & Gas</SelectItem>
-											<SelectItem value="healthcare">Healthcare</SelectItem>
+											<SelectItem value="banking-finance">
+												Banking & Finance
+											</SelectItem>
+											<SelectItem value="telecommunication">
+												Telecommunication
+											</SelectItem>
 											<SelectItem value="residential">Residential</SelectItem>
 											<SelectItem value="manufacturing">
 												Manufacturing
 											</SelectItem>
+											<SelectItem value="other">Other</SelectItem>
 										</SelectContent>
 									</Select>
 								</FormControl>
@@ -141,16 +148,22 @@ export const RequestServiceForm = () => {
 										</FormControl>
 										<SelectContent>
 											<SelectItem value="security-guard">
-												Security Guard
+												Security Guard Services
 											</SelectItem>
-											<SelectItem value="security-systems">
-												Security Systems
+											<SelectItem value="emergency-response">
+												Emergency Response
+											</SelectItem>
+											<SelectItem value="24-7-monitoring">
+												24/7 Monitoring
 											</SelectItem>
 											<SelectItem value="risk-assessment">
 												Risk Assessment
 											</SelectItem>
-											<SelectItem value="hazard-management">
-												Hazard Management
+											<SelectItem value="safety-training">
+												Safety Training
+											</SelectItem>
+											<SelectItem value="compliance-audit">
+												Compliance Audit
 											</SelectItem>
 										</SelectContent>
 									</Select>
@@ -211,6 +224,10 @@ export const RequestServiceForm = () => {
 							</FormItem>
 						)}
 					/>
+
+					<Button size="lg" className="mx-auto w-full max-w-150">
+						Submit
+					</Button>
 				</div>
 			</form>
 		</Form>

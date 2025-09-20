@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { useBreakpoint } from "@/hooks/use-breakpoint";
 import { cn } from "@/lib/utils";
 import logo from "@/public/logo.svg";
+import logoLight from "@/public/logo-light.svg";
 import { Button } from "./ui/button";
 
 const links = [
@@ -30,8 +31,10 @@ const fadeInVariants = {
 
 export const Header = ({
 	showRequestServiceButton = true,
+	mode = "dark",
 }: {
 	showRequestServiceButton?: boolean;
+	mode?: "dark" | "light";
 }) => {
 	const pathname = usePathname();
 	const [open, setOpen] = useState(false);
@@ -62,15 +65,19 @@ export const Header = ({
 	return (
 		<header
 			className={cn(
-				"relative z-30 bg-black/5",
-				open && isMobile && "bg-black/80",
+				"relative z-30",
+				mode === "dark" ? "bg-black/5" : "bg-white",
+				open && isMobile && (mode === "dark" ? "bg-black/80" : "bg-white/80"),
 			)}
 		>
 			<nav data-slot="header-nav" className="px-4">
 				<ul className="container mx-auto flex h-20 justify-between gap-8 py-3">
 					<li className="self-center">
 						<Link href="/">
-							<Image src={logo} alt="Fastline Logo" />
+							<Image
+								src={mode === "dark" ? logoLight : logo}
+								alt="Fastline Logo"
+							/>
 						</Link>
 					</li>
 
@@ -123,7 +130,10 @@ export const Header = ({
 							animate="animate"
 							exit="initial"
 							variants={fadeInVariants}
-							className="-mx-4 absolute flex w-full flex-col overflow-hidden border-white/20 border-t bg-black/80"
+							className={cn(
+								"-mx-4 absolute flex w-full flex-col overflow-hidden border-white/20 border-t",
+								mode === "dark" ? "bg-black/80" : "bg-white/80",
+							)}
 						>
 							{links.map((link) => {
 								const isActive = isLinkActive(link.href);
@@ -132,8 +142,12 @@ export const Header = ({
 										<Link
 											href={link.href}
 											className={cn(
-												"block px-6 py-4 hover:bg-white/10",
-												isActive && "bg-white/10",
+												"block px-6 py-4",
+												mode === "dark"
+													? "hover:bg-white/10"
+													: "hover:bg-black/10",
+												isActive &&
+													(mode === "dark" ? "bg-black/10" : "bg-white/10"),
 											)}
 											data-not-link
 										>
@@ -143,7 +157,12 @@ export const Header = ({
 								);
 							})}
 							{showRequestServiceButton && (
-								<li className="block px-6 py-4 hover:bg-white/10">
+								<li
+									className={cn(
+										"block px-6 py-4",
+										mode === "dark" ? "hover:bg-white/10" : "hover:bg-black/10",
+									)}
+								>
 									<Button size="sm" asChild>
 										<Link href="/request-service">Request Service</Link>
 									</Button>

@@ -2,7 +2,7 @@ import { MailIcon, MapPinIcon, PhoneIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { socialLinks } from "@/lib/data";
-import logo from "@/public/logo.svg";
+import logo from "@/public/logo-light.svg";
 
 const serviceLinks = [
 	{ name: "Security Operations", href: "#" },

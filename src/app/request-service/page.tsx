@@ -1,7 +1,6 @@
-import { ScrollTextIcon } from "lucide-react";
+import { Footer } from "@/components/footer";
 import { PageHero } from "@/components/hero";
 import { RequestServiceForm } from "@/components/request-service/request-service-form";
-import { Button } from "@/components/ui/button";
 
 export const metadata = {
 	title: "Request Service",
@@ -11,27 +10,22 @@ export const metadata = {
 const RequestServicePage = () => {
 	return (
 		<>
-			<PageHero image="/images/request-service-hero.jpg" />
-			<section className="container mx-auto px-4 pb-12">
+			<PageHero
+				image="/images/request-service-hero.jpg"
+				classNames={{ root: "h-162.5" }}
+				badge={true}
+			/>
+			<section
+				className="-mt-49.25 mx-auto max-w-230.5 bg-background px-15 py-13.75"
+				style={{
+					boxShadow: "0px 3px 8px rgba(5, 43, 139, 0.12)",
+				}}
+			>
 				<RequestServiceForm />
 			</section>
+			<Footer />
 		</>
 	);
 };
 
-const SuccessfulRequest = () => (
-	<>
-		<ScrollTextIcon className="size-24 text-primary" />
-
-		<h1 className="font-bold">Thank you!</h1>
-		<p>
-			Your request has been received. Our team will review the details and
-			contact you within 1–2 business days.
-		</p>
-		<p className="font-bold">
-			Need urgent support? Feel free to call us directly.
-		</p>
-		<Button>Back to Home</Button>
-	</>
-);
 export default RequestServicePage;

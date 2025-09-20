@@ -1,33 +1,41 @@
 "use client";
+import { motion } from "motion/react";
 import Link from "next/link";
 import { Fragment } from "react";
 import { contactInfo, socialLinks } from "@/lib/data";
+import { appearVariants, appearViewport } from "@/lib/motion.util";
 
 export const ContactInfo = () => {
 	return (
-		<section className="px-4 py-12">
+		<section data-not-section className="-mt-49.25 pt-20">
 			{/* Contact info */}
-			<div className="container mx-auto flex justify-between gap-8 max-md:flex-col max-md:items-center md:gap-4">
+			<motion.div className="container mx-auto flex items-center justify-between gap-11 max-md:flex-col max-md:items-center md:gap-15">
 				{contactInfo.map((info, i) => (
 					<Fragment key={info.title}>
-						<div className="flex max-w-[40ch] flex-1 flex-col items-center gap-2 text-center">
-							<info.icon className="size-10 rounded bg-primary/5 p-2 text-primary" />
+						<motion.div
+							variants={appearVariants}
+							whileInView="animate"
+							viewport={appearViewport}
+							transition={{ delay: i * 0.1 }}
+							className="flex h-50 max-w-75 flex-1 shrink-0 flex-col items-center gap-3 text-center"
+						>
+							<info.icon className="size-11.25 rounded bg-primary/5 p-2 text-primary" />
 							<h3 className="font-bold text-primary">{info.title}</h3>
 							<p>{info.value}</p>
-						</div>
+						</motion.div>
 						{i + 1 !== contactInfo.length && (
-							<div className="w-24 shrink-0 md:w-0">
+							<div className="w-24 shrink-0 md:h-28 md:w-0">
 								<hr className="h-full flex-0 self-center border border-primary" />
 							</div>
 						)}
 					</Fragment>
 				))}
-			</div>
+			</motion.div>
 
 			{/* Socials */}
-			<div className="my-8 text-center">
+			<div className="mx-auto my-8 max-w-87.5 text-center">
 				<h2 className="mb-4 font-bold text-lg">Connect with us</h2>
-				<div className="flex flex-wrap items-center justify-center gap-4 md:gap-8">
+				<div className="flex flex-wrap items-center justify-between gap-4 md:gap-8">
 					{socialLinks.map((link) => (
 						<Link
 							key={link.name}

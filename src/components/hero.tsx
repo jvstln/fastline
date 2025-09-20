@@ -14,6 +14,7 @@ type PageHeroProps = {
 	image: string;
 	title?: string;
 	classNames?: Partial<Record<"root" | "content" | "title" | "badge", string>>;
+	badge?: React.ReactNode;
 };
 
 export const PageHero = (props: PageHeroProps) => {
@@ -47,14 +48,16 @@ export const PageHero = (props: PageHeroProps) => {
 						props.classNames?.content,
 					)}
 				>
-					<MotionBadge
-						variants={appearVariants}
-						variant="secondary"
-						className={cn(props.classNames?.badge)}
-					>
-						<ShieldIcon />
-						FASTLINE INTEGRATED SERVICES LTD
-					</MotionBadge>
+					{props.badge || (
+						<MotionBadge
+							variants={appearVariants}
+							variant="secondary"
+							className={cn(props.classNames?.badge)}
+						>
+							<ShieldIcon />
+							FASTLINE INTEGRATED SERVICES LTD
+						</MotionBadge>
+					)}
 					{props.title && (
 						<motion.h1
 							variants={appearVariants}
