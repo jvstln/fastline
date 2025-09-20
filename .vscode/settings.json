@@ -3,6 +3,7 @@
 	"editor.formatOnSave": true,
 	"editor.defaultFormatter": "biomejs.biome",
 	"tailwindCSS.classFunctions": ["cva", "cn", "clsx", "tw"],
+	"tailwindCSS.classAttributes": ["classNames"],
 	"editor.codeActionsOnSave": {
 		"source.fixAll": "explicit"
 	}

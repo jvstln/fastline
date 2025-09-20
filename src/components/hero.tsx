@@ -1,10 +1,14 @@
 "use client";
 import { motion, stagger } from "motion/react";
-import { appearVariants, appearViewport } from "@/lib/motion.util";
+import {
+	appearVariants,
+	appearViewport,
+	MotionBadge,
+	MotionImage,
+} from "@/lib/motion.util";
 import { cn } from "@/lib/utils";
 import { Header } from "./header";
 import { ShieldIcon } from "./icons";
-import { Badge } from "./ui/badge";
 
 type PageHeroProps = {
 	image: string;
@@ -16,37 +20,53 @@ export const PageHero = (props: PageHeroProps) => {
 	return (
 		<div
 			className={cn(
-				"flex min-h-[50vh] flex-col text-white",
+				"relative flex h-155 flex-col overflow-hidden text-white",
 				props.classNames?.root,
 			)}
-			style={{
-				background: `linear-gradient(#0008, #0008), url('${props.image || "/images/homepage-hero.png"}') no-repeat center center/cover`,
-			}}
+			// style={{
+			// 	background: `linear-gradient(#0008, #0008), url('${props.image || "/images/homepage-hero.png"}') no-repeat center center/cover`,
+			// }}
 		>
+			<MotionImage
+				src={props.image}
+				initial={{ scale: 1.2 }}
+				animate={{ scale: 1 }}
+				alt={props.title}
+				className="-z-10 absolute inset-0 size-full object-cover"
+				fill
+			/>
 			<Header />
 			{/* Hero content */}
 			<div className="my-auto p-4">
-				<div
+				<motion.div
+					animate="animate"
+					initial="initial"
+					transition={{ delayChildren: stagger(0.1), duration: 1 }}
 					className={cn(
-						"container mx-auto flex basis-1/2 flex-col gap-4",
+						"container mx-auto flex basis-1/2 flex-col gap-6",
 						props.classNames?.content,
 					)}
 				>
-					<Badge variant="secondary" className={cn(props.classNames?.badge)}>
+					<MotionBadge
+						variants={appearVariants}
+						variant="secondary"
+						className={cn(props.classNames?.badge)}
+					>
 						<ShieldIcon />
 						FASTLINE INTEGRATED SERVICES LTD
-					</Badge>
+					</MotionBadge>
 					{props.title && (
-						<h1
+						<motion.h1
+							variants={appearVariants}
 							className={cn(
-								"font-bold text-4xl md:text-5xl lg:text-6xl",
+								"font-extrabold text-[2.75rem]",
 								props.classNames?.title,
 							)}
 						>
 							{props.title}
-						</h1>
+						</motion.h1>
 					)}
-				</div>
+				</motion.div>
 			</div>
 		</div>
 	);
@@ -75,7 +95,7 @@ export const SectionHeading = (props: SectionHeadingProps) => {
 			<motion.h2
 				variants={appearVariants}
 				className={cn(
-					"mt-5 mb-3 flex flex-wrap justify-center gap-2 font-bold text-[2rem]",
+					"mt-5 mb-3 font-bold text-[2rem]",
 					props.classNames?.title,
 				)}
 			>

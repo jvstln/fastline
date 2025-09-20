@@ -6,13 +6,15 @@ import {
 	ShieldEllipsisIcon,
 	TelescopeIcon,
 } from "lucide-react";
+import { motion, stagger } from "motion/react";
 import Image from "next/image";
-import { useBreakpoint } from "@/hooks/use-breakpoint";
+import { appearVariants, appearViewport, MotionImage } from "@/lib/motion.util";
 import { cn } from "@/lib/utils";
 import monitoringImage from "@/public/images/24-7-monitoring.jpg";
 import riskAndComplianceImage from "@/public/images/risk-and-compliance-solutions-2.png";
 import securityGuardServicesImage from "@/public/images/security-guard-services.jpg";
 import securitySystemsAndEquipmentImage from "@/public/images/security-systems-and-equipment.jpg";
+import { SectionHeading } from "../hero";
 import { SecurityGuardIcon, TriangleSearchIcon } from "../icons";
 import { Badge } from "../ui/badge";
 
@@ -62,104 +64,114 @@ const riskSolutions = [
 ];
 
 export const SecurityOperations = () => {
-	const isMobile = useBreakpoint("max-md");
-
-	const boxClassName = "rounded shadow border";
-	const gridTemplateStyles = {
-		gridTemplateColumns: "1rem 1fr 1fr 1fr 1rem",
-		gridTemplateRows: "1rem 1fr auto 1rem",
-	};
-
 	return (
 		<>
-			<section className="overflow-hidden px-4 py-12">
-				<div className="container mx-auto mb-12 flex flex-col items-center gap-2 text-center">
-					<Badge className="uppercase">
-						<ShieldCheckIcon />
-						Security Operations
-					</Badge>
-					<h2 className="font-bold text-3xl">
-						<span className="text-primary">Protection</span> You Can Rely On
-					</h2>
-					<p className="max-w-[65ch] text-muted-foreground">
-						From trained guards to 24/7 monitoring and rapid emergency response,
-						we deliver dependable, on-ground security tailored to your
-						environment.
-					</p>
-				</div>
+			<section className="overflow-hidden">
+				<div className="container mx-auto">
+					<SectionHeading
+						title={
+							<>
+								<span className="text-primary">Protection</span> You Can Rely On
+							</>
+						}
+						subtitle="From trained guards to 24/7 monitoring and rapid emergency response,
+							we deliver dependable, on-ground security tailored to your
+							environment."
+						badge={
+							<Badge>
+								<ShieldCheckIcon />
+								Security Operations
+							</Badge>
+						}
+					/>
 
-				<div className="container mx-auto flex flex-col items-center gap-4 md:gap-8">
-					{operations.map((operation) => (
-						<div
-							key={operation.title}
-							className={cn("grid max-md:max-w-80", isMobile && boxClassName)}
-							style={gridTemplateStyles}
-						>
-							<div
-								className={cn(
-									!isMobile && boxClassName,
-									isMobile
-										? "col-[2/-2] row-[3/4]"
-										: "col-[1/-1] row-[2/3] grid gap-4",
-								)}
-								style={gridTemplateStyles}
+					<div className="mt-25 flex flex-col items-center gap-25">
+						{operations.map((operation, i) => (
+							<motion.div
+								initial="initial"
+								whileInView="animate"
+								transition={{ delayChildren: stagger(0.1), delay: i * 0.2 }}
+								variants={appearVariants}
+								viewport={appearViewport}
+								key={operation.title}
+								className="flex w-230.5 gap-8 rounded-sm p-8"
+								style={{
+									boxShadow: "0px 3px 8px rgba(0, 0, 0, 0.16)",
+								}}
 							>
-								<div
-									className={cn("col-[3/-1] row-[1/-1]", isMobile && "pt-4")}
-								>
-									<h3 className="mb-2 flex items-center gap-3 font-bold text-lg">
+								<MotionImage
+									src={operation.image}
+									alt={operation.title}
+									variants={appearVariants}
+									className={cn(
+										"-my-13 size-full w-72.25 rounded-xs object-cover",
+									)}
+								/>
+								<motion.div variants={appearVariants}>
+									<h3 className="mb-3 flex items-center gap-2.5 font-bold text-xl">
 										<operation.icon className="size-8 rounded bg-primary/5 p-1 text-primary" />
 										{operation.title}
 									</h3>
-									<p>{operation.content}</p>
-								</div>
-							</div>
-							<Image
-								src={operation.image}
-								alt={operation.title}
-								className={cn(
-									"size-full rounded object-cover",
-									isMobile ? "col-[2/-2] row-[2/3]" : "col-[2/3] row-[1/-1]",
-								)}
-							/>
-						</div>
-					))}
+									<p className="text-justify">{operation.content}</p>
+								</motion.div>
+							</motion.div>
+						))}
+					</div>
 				</div>
 			</section>
 
 			{/* Risk and compliance solutions */}
-			<section className="overflow-hidden bg-blue-50/50 px-4 py-12">
-				<div className="container mx-auto mb-12 flex flex-col items-center gap-2 text-center">
-					<Badge className="uppercase">
-						<ShieldCheckIcon />
-						Risk &amp; Compliance Solutions
-					</Badge>
-					<h2 className="font-bold text-3xl">
-						Stay <span className="text-primary">Secure</span>. Stay{" "}
-						<span className="text-primary">Compliant</span>
-					</h2>
-					<p className="max-w-[65ch] text-muted-foreground">
-						We identify risks, close security gaps, and help you meet regulatory
-						standards through audits, assessments, and strategic planning.
-					</p>
-				</div>
-
-				<div className="container mx-auto flex gap-8 max-md:flex-col">
-					<Image
-						src={riskAndComplianceImage}
-						alt="Risk and Compliance Solutions"
-						className="w-full flex-1 object-cover"
+			<section className="overflow-hidden bg-blue-50/50">
+				<div className="container mx-auto">
+					<SectionHeading
+						title={
+							<>
+								Stay <span className="text-primary">Secure</span>. Stay{" "}
+								<span className="text-primary">Compliant</span>
+							</>
+						}
+						subtitle="We identify risks, close security gaps, and help you meet regulatory
+							standards through audits, assessments, and strategic planning."
+						badge={
+							<Badge>
+								<ShieldCheckIcon />
+								Risk &amp; Compliance Solutions
+							</Badge>
+						}
 					/>
-					<div className="flex flex-1 flex-col gap-4">
-						{riskSolutions.map((solution) => (
-							<div key={solution.title} className="rounded p-4 shadow">
-								<h3 className="mb-2 flex items-center gap-3 font-bold text-lg">
-									<solution.icon className="size-8 rounded bg-primary/5 p-1 text-primary" />
-									{solution.title}
-								</h3>
-								<p className="text-justify">{solution.content}</p>
-							</div>
-						))}
+					<div className="mt-15 flex gap-22 max-md:flex-col">
+						<MotionImage
+							initial={{ opacity: 0 }}
+							whileInView={{ opacity: 1 }}
+							viewport={{ amount: 0.3 }}
+							src={riskAndComplianceImage}
+							alt="Risk and Compliance Solutions"
+							className="w-127.75"
+						/>
+						<div className="flex flex-1 flex-col gap-8">
+							{riskSolutions.map((solution, i) => (
+								<motion.div
+									initial="initial"
+									whileInView="animate"
+									transition={{ delayChildren: stagger(0.1), delay: i * 0.2 }}
+									variants={appearVariants}
+									viewport={appearViewport}
+									key={solution.title}
+									className="rounded p-8 shadow-md"
+								>
+									<motion.h3
+										variants={appearVariants}
+										className="mb-3 flex items-center gap-3 font-bold text-lg"
+									>
+										<solution.icon className="size-8 rounded bg-primary/5 p-1 text-primary" />
+										{solution.title}
+									</motion.h3>
+									<motion.p variants={appearVariants} className="text-justify">
+										{solution.content}
+									</motion.p>
+								</motion.div>
+							))}
+						</div>
 					</div>
 				</div>
 			</section>

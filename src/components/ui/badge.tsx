@@ -1,7 +1,6 @@
 "use client";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-import { motion } from "motion/react";
 import type * as React from "react";
 import { cn } from "@/lib/utils";
 
@@ -49,6 +48,4 @@ function Badge({
 	);
 }
 
-const MotionBadge = motion.create(Badge);
-
-export { Badge, badgeVariants, MotionBadge };
+export { Badge, badgeVariants };

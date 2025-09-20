@@ -3,10 +3,10 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { stats } from "@/lib/data";
+import { MotionBadge } from "@/lib/motion.util";
 import homepageHeroImage from "@/public/images/homepage-hero.png";
 import { Header } from "../header";
 import { ShieldIcon } from "../icons";
-import { MotionBadge } from "../ui/badge";
 import { Button } from "../ui/button";
 
 const MotionImage = motion(Image);
