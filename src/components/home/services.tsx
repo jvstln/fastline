@@ -60,7 +60,7 @@ export const HomepageServices = () => {
 						}
 					/>
 
-					<div className="-mb-20 mt-16 flex flex-col gap-20 md:gap-2">
+					<div className="mt-16 flex flex-col gap-20 md:gap-2">
 						{services.map((service, i) => {
 							const image = (
 								<MotionImage
@@ -131,7 +131,7 @@ export const HomepageServices = () => {
 								Trusted Security Partner
 							</Badge>
 						}
-						classNames={{ root: "max-w-161.5 mb-20" }}
+						classNames={{ root: "mb-20 max-w-161.5" }}
 					/>
 					<Button size="lg" className="w-75">
 						Request Service

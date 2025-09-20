@@ -152,7 +152,7 @@ const PartnersMarquee = () => {
 				animate={{ x: ["0%", "-100%"] }}
 				transition={{
 					repeat: Number.POSITIVE_INFINITY,
-					duration: 20, // ⏱ adjust speed
+					duration: 10, // ⏱ adjust speed
 					ease: "linear",
 				}}
 			>
@@ -162,7 +162,7 @@ const PartnersMarquee = () => {
 						key={partner.name + String(i)}
 						src={partner.image}
 						alt={partner.name}
-						className="h-16 w-auto shrink-0 rounded-lg object-cover shadow-md"
+						className="h-8 w-auto shrink-0 rounded-lg object-cover shadow-md"
 					/>
 				))}
 			</motion.div>

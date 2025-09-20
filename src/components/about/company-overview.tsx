@@ -29,7 +29,7 @@ export const AboutCompanyOverview = () => {
 					}
 					classNames={{
 						root: "lg:items-start lg:text-left",
-						subtitle: "lg:text-justify",
+						subtitle: "text-justify md:text-center lg:text-justify",
 					}}
 				/>
 

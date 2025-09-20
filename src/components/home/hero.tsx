@@ -78,19 +78,19 @@ export const HomepageHero = () => {
 						</motion.div>
 					</motion.div>
 					{/* Hero cards */}
-					<div className="flex flex-wrap gap-4 text-center max-lg:justify-between max-lg:self-stretch lg:grid lg:grid-cols-2 lg:gap-20">
+					<div className="grid grid-cols-[repeat(2,auto)] gap-4 text-center max-lg:justify-between max-lg:self-stretch lg:grid-cols-2 lg:gap-20">
 						{stats.map((stat, i) => (
 							<motion.div
 								initial={{ opacity: 0, scale: 0.3 }}
 								animate={{ opacity: 1, scale: 1 }}
 								transition={{ delay: 0.1 * i }}
 								key={stat.label + stat.value}
-								className="flex w-42.5 flex-col items-center justify-center gap-2 rounded-md border bg-white/5 p-4 py-8 backdrop-blur-xs max-md:h-27.5 max-md:grow lg:h-30 lg:w-52.5"
+								className="flex max-w-42.5 flex-col items-center justify-center gap-2 rounded-md border bg-white/5 p-4 py-8 backdrop-blur-xs max-md:h-27.5 max-md:grow lg:h-30 lg:w-52.5"
 							>
 								<span className="font-bold font-michroma text-2xl">
 									{stat.value}
 								</span>
-								<span className="text-lg">{stat.label}</span>
+								<span className="md:text-lg">{stat.label}</span>
 							</motion.div>
 						))}
 					</div>
