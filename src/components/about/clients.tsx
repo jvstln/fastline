@@ -1,7 +1,9 @@
 "use client";
-import Image from "next/image";
+import { motion, stagger } from "motion/react";
 import { useBreakpoint } from "@/hooks/use-breakpoint";
 import { clients } from "@/lib/data";
+import { appearVariants, appearViewport, MotionImage } from "@/lib/motion.util";
+import { SectionHeading } from "../hero";
 import { DoubleCogIcon } from "../icons";
 import { Badge } from "../ui/badge";
 
@@ -9,51 +11,68 @@ export const AboutClients = () => {
 	const isTablet = useBreakpoint("max-md");
 
 	return (
-		<section className="px-4 py-12">
+		<section>
 			<div className="container mx-auto">
-				<div className="mb-8 flex flex-col items-center gap-2 text-center">
-					<Badge className="uppercase">
-						<DoubleCogIcon />
-						Our Clients
-					</Badge>
-					<h2 className="font-bold text-3xl">
-						Trusted by <span className="text-primary">leaders</span> across{" "}
-						<span className="text-primary">industries</span>.
-					</h2>
-					<p className="max-w-[65ch] text-muted-foreground">
-						Fastline Integrated Services is trusted by top organizations across
-						key sectors, including oil & gas, healthcare and manufacturing.
-					</p>
-				</div>
+				<SectionHeading
+					title={
+						<>
+							Trusted by <span className="text-primary">leaders</span> across{" "}
+							<span className="text-primary">industries</span>.
+						</>
+					}
+					subtitle="Fastline Integrated Services is trusted by top organizations across
+						key sectors, including oil & gas, healthcare and manufacturing."
+					badge={
+						<Badge>
+							<DoubleCogIcon />
+							Our Clients
+						</Badge>
+					}
+				/>
 
-				<div className="flex flex-col gap-6">
+				<div className="mt-15 flex flex-col gap-10 lg:gap-15">
 					{clients.map((client, i) => {
 						const image = (
-							<Image
+							<MotionImage
 								src={client.image}
 								alt={client.title}
-								className="mx-auto h-auto w-full object-contain max-md:size-80"
+								className="-mb-12 mx-auto h-auto w-113.75 object-contain max-md:size-80"
 							/>
 						);
 						const content = (
-							<div className="flex flex-col items-start gap-4 text-justify lg:col-span-2">
-								<h3 className="text-left font-semibold text-2xl">
+							<motion.div
+								variants={appearVariants}
+								className="flex flex-col items-start gap-3 text-justify lg:col-span-2"
+							>
+								<motion.h3
+									variants={appearVariants}
+									className="text-left font-bold text-2xl"
+								>
 									{client.title}
-								</h3>
-								<p>{client.description}</p>
-							</div>
+								</motion.h3>
+								<motion.p variants={appearVariants}>
+									{client.description}
+								</motion.p>
+							</motion.div>
 						);
 
 						const shouldFlip = i % 2 !== 0 && !isTablet;
 
 						return (
-							<div
+							<motion.div
+								initial="initial"
+								whileInView="animate"
+								transition={{
+									delayChildren: stagger(0.2),
+								}}
+								variants={appearVariants}
+								viewport={appearViewport}
 								key={client.title}
-								className="grid items-center gap-6 md:grid-cols-2 lg:grid-cols-3"
+								className="flex items-center gap-10 max-md:flex-col"
 							>
 								{shouldFlip ? content : image}
 								{shouldFlip ? image : content}
-							</div>
+							</motion.div>
 						);
 					})}
 				</div>

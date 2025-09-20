@@ -13,7 +13,7 @@ import { ShieldIcon } from "./icons";
 type PageHeroProps = {
 	image: string;
 	title?: string;
-	classNames?: Record<"root" | "content" | "title" | "badge", string>;
+	classNames?: Partial<Record<"root" | "content" | "title" | "badge", string>>;
 };
 
 export const PageHero = (props: PageHeroProps) => {

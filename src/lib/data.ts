@@ -5,6 +5,8 @@ import {
 	MailIcon,
 	MapPinIcon,
 	PhoneIcon,
+	TargetIcon,
+	TelescopeIcon,
 	TwitterIcon,
 } from "lucide-react";
 import arcticGynaeImage from "@/public/images/brands/arcticgynae.png";
@@ -88,4 +90,19 @@ export const partners = [
 	{ name: "Oando", image: oandoImage },
 	{ name: "Technoil", image: technoilImage },
 	{ name: "Wissen", image: wissenImage },
+];
+
+export const vissionAndMission = [
+	{
+		title: "Vision",
+		icon: TelescopeIcon,
+		description:
+			"We have structured our organization to be your preferred and internationally recognized best-in-class professional Security and Safety solutions services provider.",
+	},
+	{
+		title: "Mission",
+		icon: TargetIcon,
+		description:
+			"FastLine Integrated Services Limited shall provide Security and Safety Management solutions and related services nationwide, with a focus on high quality, reliability, ethics and integrity.",
+	},
 ];

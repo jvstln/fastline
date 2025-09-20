@@ -12,7 +12,11 @@ export const metadata = {
 const AboutUsPage = () => {
 	return (
 		<>
-			<PageHero title="About Us" image="/images/about-hero.jpg" />
+			<PageHero
+				title="About Us"
+				image="/images/about-hero.jpg"
+				classNames={{ root: "h-135.75" }}
+			/>
 			<AboutCompanyOverview />
 			<AboutApproach />
 			<AboutClients />

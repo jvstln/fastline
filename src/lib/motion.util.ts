@@ -21,6 +21,11 @@ export const appearVariants = {
 	},
 };
 
+export const scaleInVariants = {
+	initial: { ...appearVariants.initial, scale: 0.7 },
+	animate: { ...appearVariants.animate, scale: 1 },
+};
+
 export const appearViewport: ViewportOptions = {
 	amount: "some",
 	margin: "-10%",
