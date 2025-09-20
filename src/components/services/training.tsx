@@ -1,9 +1,9 @@
 "use client";
 import { ShieldPlusIcon } from "lucide-react";
 import { motion, stagger } from "motion/react";
-import Image from "next/image";
 import { useBreakpoint } from "@/hooks/use-breakpoint";
-import { appearVariants, appearViewport } from "@/lib/motion.util";
+import { appearVariants, appearViewport, MotionImage } from "@/lib/motion.util";
+import { cn } from "@/lib/utils";
 import trainingImage from "@/public/images/training-and-capacity-building-2.png";
 import { SectionHeading } from "../hero";
 import { IedAwarenessIcon, PeopleIcon } from "../icons";
@@ -31,11 +31,11 @@ const trainings = [
 ];
 
 export const TrainingAndCapacityBuilding = () => {
-	const isTablet = useBreakpoint("max-md");
+	const isTablet = useBreakpoint("max-lg");
 
 	return (
 		<section
-			className="px-0 py-20 text-white"
+			className="p-0 text-white lg:py-20"
 			style={{
 				background: `linear-gradient(#0008, #0008), url('/images/training-and-capacity-building-2.png') no-repeat center center/cover`,
 			}}
@@ -70,40 +70,53 @@ export const TrainingAndCapacityBuilding = () => {
 								<Badge variant="secondary">Training & Capacity Building</Badge>
 							}
 							classNames={{
-								root: "mb-13.5 items-start text-left",
+								root: "mb-13.5 lg:items-start lg:text-left",
 							}}
 						/>
-						{isTablet && (
-							<Image
-								src={trainingImage}
-								alt="Training"
-								className="my-6 h-146 w-134.75 rounded border-2 object-cover"
-							/>
-						)}
-						<TrainingList />
+
+						{/* For Mobile and Tablet */}
+
+						<div className="flex items-center gap-20 max-md:flex-col-reverse md:gap-10">
+							<TrainingList />
+							{isTablet && <TrainingImage className="h-95.25 w-90" />}
+						</div>
 					</div>
 
-					{!isTablet && (
-						<Image
-							src={trainingImage}
-							alt="Training"
-							className="h-146 w-134.75 rounded border-2 object-cover"
-						/>
-					)}
+					{!isTablet && <TrainingImage />}
 				</div>
 			</motion.div>
 		</section>
 	);
 };
 
-const TrainingList = () => (
+const TrainingImage = ({
+	className,
+	...props
+}: Partial<React.ComponentProps<typeof MotionImage>>) => (
+	<MotionImage
+		variants={appearVariants}
+		initial="initial"
+		whileInView="animate"
+		viewport={{ amount: 0.1 }}
+		src={trainingImage}
+		alt="Training"
+		className={cn("h-146 w-134.75 rounded border-2 object-cover", className)}
+		{...props}
+	/>
+);
+
+const TrainingList = ({
+	classNames,
+}: {
+	classNames?: Partial<Record<"root", string>>;
+}) => (
 	<motion.div
 		initial="initial"
 		whileInView="animate"
-		viewport={{ amount: 0.5 }}
+		viewport={{ amount: 0.5, once: true }}
 		transition={{ delayChildren: stagger(0.2) }}
 		variants={appearVariants}
-		className="flex w-148 flex-col gap-11"
+		className={cn("flex max-w-148 flex-col gap-11", classNames?.root)}
 	>
 		{trainings.map((training) => (
 			<motion.div

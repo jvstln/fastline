@@ -7,7 +7,6 @@ import {
 	TelescopeIcon,
 } from "lucide-react";
 import { motion, stagger } from "motion/react";
-import Image from "next/image";
 import { appearVariants, appearViewport, MotionImage } from "@/lib/motion.util";
 import { cn } from "@/lib/utils";
 import monitoringImage from "@/public/images/24-7-monitoring.jpg";
@@ -94,7 +93,7 @@ export const SecurityOperations = () => {
 								variants={appearVariants}
 								viewport={appearViewport}
 								key={operation.title}
-								className="flex w-230.5 gap-8 rounded-sm p-8"
+								className="flex max-w-230.5 gap-8 rounded-sm p-4 max-md:flex-col md:p-8"
 								style={{
 									boxShadow: "0px 3px 8px rgba(0, 0, 0, 0.16)",
 								}}
@@ -104,7 +103,7 @@ export const SecurityOperations = () => {
 									alt={operation.title}
 									variants={appearVariants}
 									className={cn(
-										"-my-13 size-full w-72.25 rounded-xs object-cover",
+										"md:-my-13 size-full w-72.25 rounded-xs object-cover max-md:mx-auto",
 									)}
 								/>
 								<motion.div variants={appearVariants}>
@@ -143,7 +142,7 @@ export const SecurityOperations = () => {
 						<MotionImage
 							initial={{ opacity: 0 }}
 							whileInView={{ opacity: 1 }}
-							viewport={{ amount: 0.3 }}
+							viewport={{ amount: 0.3, once: true }}
 							src={riskAndComplianceImage}
 							alt="Risk and Compliance Solutions"
 							className="w-127.75"

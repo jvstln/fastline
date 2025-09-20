@@ -87,7 +87,7 @@ export const SectionHeading = (props: SectionHeadingProps) => {
 			viewport={appearViewport}
 			transition={{ delayChildren: stagger(0.1) }}
 			className={cn(
-				"mx-auto flex max-w-160.5 flex-col items-center text-center lg:max-w-180.5",
+				"mx-auto flex max-w-160.5 flex-col items-center overflow-hidden text-center lg:max-w-180.5",
 				props.classNames?.root,
 			)}
 		>
