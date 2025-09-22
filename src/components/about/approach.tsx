@@ -26,16 +26,17 @@ export const AboutApproach = () => {
 	};
 
 	return (
-		<section className="bg-black text-white">
+		<section className="bg-black py-30 text-white">
 			<SectionHeading
 				title="Tailored strategies. Proven methods. Reliable outcomes"
 				badge={<Badge variant="secondary">Our Approach</Badge>}
+				classNames={{ root: "max-w-164 lg:max-w-164" }}
 			/>
 
-			<div className="mt-20 grid grid-cols-1 gap-15 md:grid-cols-4 md:grid-rows-3 lg:gap-12">
+			<div className="container mx-auto mt-15 grid grid-cols-1 gap-15 text-[15px]/[1.7] md:mt-20 md:grid-cols-4 md:grid-rows-[217px] md:text-lg/[1.7] lg:gap-12">
 				<motion.p
 					{...fadeInProps}
-					className="row-[1/2] text-center md:col-[1/3] md:row-[1/2] md:text-justify"
+					className="row-[1/2] text-center md:col-[1/3] md:row-[1/2] md:max-w-153.75 md:text-justify"
 				>
 					At Fastline, we believe effective security is never one-size-fits-all.
 					That&apos;s why our approach is rooted in careful assessment,
@@ -59,7 +60,7 @@ export const AboutApproach = () => {
 				/>
 				<motion.p
 					{...fadeInProps}
-					className="row-[4/5] self-end text-center md:col-[3/5] md:row-[3/4] md:text-justify"
+					className="row-[4/5] self-end text-center md:col-[3/5] md:row-[3/4] md:max-w-146.25 md:text-justify"
 				>
 					Our team works proactively not reactively, anticipating threats,
 					identifying vulnerabilities, and maintaining constant situational
@@ -72,7 +73,10 @@ export const AboutApproach = () => {
 				{/* Quote */}
 				<motion.div
 					{...scaleInProps}
-					className="row-[3/4] flex max-w-142.5 flex-col gap-2 self-center justify-self-center rounded bg-neutral-800 p-8 shadow-neutral-800 shadow-xl ring ring-neutral-500 md:col-[2/4] md:row-[2/3]"
+					className="row-[3/4] flex max-w-142.5 flex-col gap-2 self-center justify-self-center rounded-sm bg-neutral-800 p-8 text-xl/[1.5] md:col-[2/4] md:row-[2/3]"
+					style={{
+						boxShadow: "-13px -11px 4px rgba(0, 0, 0, 0.4)",
+					}}
 				>
 					<QuoteIcon className="text-primary-light" />
 					<blockquote>

@@ -7,9 +7,9 @@ import { appearVariants, appearViewport } from "@/lib/motion.util";
 
 export const ContactInfo = () => {
 	return (
-		<section data-not-section className="-mt-49.25 pt-20">
+		<section data-not-section className="pt-20">
 			{/* Contact info */}
-			<motion.div className="container mx-auto flex items-center justify-between gap-11 max-md:flex-col max-md:items-center md:gap-15">
+			<motion.div className="container mx-auto mb-8 flex items-center justify-between gap-11 max-md:flex-col max-md:items-center md:gap-15">
 				{contactInfo.map((info, i) => (
 					<Fragment key={info.title}>
 						<motion.div

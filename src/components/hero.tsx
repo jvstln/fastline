@@ -1,5 +1,6 @@
 "use client";
 import { motion, stagger } from "motion/react";
+import { usePathname } from "next/navigation";
 import {
 	appearVariants,
 	appearViewport,
@@ -18,20 +19,25 @@ type PageHeroProps = {
 };
 
 export const PageHero = (props: PageHeroProps) => {
+	const pathname = usePathname();
+
 	return (
 		<div
+			// causes animations to replay on navigation
+			key={pathname}
 			className={cn(
 				"relative flex h-155 flex-col overflow-hidden text-white",
 				props.classNames?.root,
 			)}
-			// style={{
-			// 	background: `linear-gradient(#0008, #0008), url('${props.image || "/images/homepage-hero.png"}') no-repeat center center/cover`,
-			// }}
+			style={{
+				background: "linear-gradient(to right, #000c 30%, #0000)",
+			}}
 		>
 			<MotionImage
 				src={props.image}
 				initial={{ scale: 1.2 }}
 				animate={{ scale: 1 }}
+				transition={{ duration: 1 }}
 				alt={props.title}
 				className="-z-10 absolute inset-0 size-full object-cover"
 				fill
@@ -42,6 +48,7 @@ export const PageHero = (props: PageHeroProps) => {
 				<motion.div
 					animate="animate"
 					initial="initial"
+					variants={appearVariants}
 					transition={{ delayChildren: stagger(0.1), duration: 1 }}
 					className={cn(
 						"container mx-auto flex basis-1/2 flex-col gap-6",

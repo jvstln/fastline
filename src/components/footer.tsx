@@ -90,7 +90,7 @@ export const Footer = () => {
 					</div>
 
 					{/* Quick links */}
-					<div className="flex max-w-165 justify-between gap-15 max-md:flex-wrap md:gap-4">
+					<div className="flex max-w-165 justify-between gap-15 max-md:flex-wrap md:gap-20">
 						{quickLinks.map(({ title, links }) => (
 							<div key={title} className="min-w-16">
 								<h2 className="mb-6 font-semibold text-[#3389FF] text-lg">

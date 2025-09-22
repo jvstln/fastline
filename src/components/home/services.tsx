@@ -17,21 +17,18 @@ const services = [
 		title: "Security Operations",
 		description:
 			"Fastline provides dependable physical security through highly trained guards, 24/7 monitoring, and rapid emergency response. We combine expert personnel with real-time surveillance systems to safeguard lives, property, and sensitive environments. Core offerings include Security Guard Services, 24/7 Monitoring, Emergency Response, and Security Systems & Equipment",
-		link: "#",
 	},
 	{
 		image: riskAndComplianceImage,
 		title: "Risk & Compliance Solutions",
 		description:
 			"We help organizations identify vulnerabilities, meet industry standards, and maintain regulatory readiness. Our risk and compliance services are designed to reduce exposure and improve operational safety. Core offerings include Risk Assessments, Compliance Support, and Hazard & Incident Management.",
-		link: "#",
 	},
 	{
 		image: trainingAndCapacityBuildingImage,
 		title: "Training & Capacity Building",
 		description:
 			"Our expert personnel offers industry-focused training that equips personnel and client teams with the knowledge and skills to act decisively in emergencies and uphold safety standards. Key programs include Safety Training, Security Guard Training, and IED Awareness & Emergency Drills.",
-		link: "#",
 	},
 ];
 
@@ -45,10 +42,8 @@ export const HomepageServices = () => {
 					<SectionHeading
 						title={
 							<>
-								Protective
-								<span className="text-primary">Services </span>
-								That Go
-								<span className="text-primary">Beyond Guarding</span>
+								Protective <span className="text-primary">Services </span>
+								That Go <span className="text-primary">Beyond Guarding</span>
 							</>
 						}
 						subtitle="From security guard services to safety trainings, we provide tailored solutions to protect your various business across multiple sectors."
@@ -82,7 +77,7 @@ export const HomepageServices = () => {
 										{service.description}
 									</motion.p>
 									<MotionButton variants={appearVariants} asChild>
-										<Link href={service.link}>Explore Services</Link>
+										<Link href="/services">Explore Services</Link>
 									</MotionButton>
 								</motion.div>
 							);

@@ -67,6 +67,7 @@ export const Header = ({
 		return () => document.removeEventListener("click", handler);
 	}, []);
 
+	// Check for header visibility
 	useMotionValueEvent(scrollY, "change", (latest) => {
 		const previous = scrollY.getPrevious();
 		const isInView = latest < HEADER_HEIGHT;
@@ -95,101 +96,47 @@ export const Header = ({
 		_showRequestServiceButton || !scrollStatus.isInView;
 
 	return (
-		<motion.header
-			className={cn(
-				"z-30 w-full",
-				mode === "dark" ? "bg-black/5" : "bg-white",
-				open && isMobile && (mode === "dark" ? "bg-black/80" : "bg-white/80"),
-				scrollStatus.isInView
-					? "relative"
-					: cn(
-							"-translate-y-full fixed backdrop-blur-xs",
-							mode === "dark" ? "bg-black/80" : "bg-white/80",
-						),
-			)}
-			animate={{ y: scrollStatus.isInView ? 0 : "100%" }}
-		>
-			<nav data-slot="header-nav" className="px-4">
-				<ul
-					className="container mx-auto flex justify-between gap-8 py-3"
-					style={{ height: HEADER_HEIGHT }}
-				>
-					<li className="self-center">
-						<Link href="/">
-							<Image
-								src={mode === "dark" ? logoLight : logo}
-								alt="Fastline Logo"
-							/>
-						</Link>
-					</li>
-
-					<ul className="flex gap-3">
-						{links.map((link) => {
-							const isActive = isLinkActive(link.href);
-							return (
-								<li key={link.name} className="flex max-lg:hidden">
-									<Link
-										href={link.href}
-										className={cn(
-											"flex items-center px-5",
-											isActive
-												? "font-bold underline decoration-2 underline-offset-3"
-												: "opacity-60 hover:font-bold hover:opacity-100",
-										)}
-										data-not-link
-									>
-										{link.name}
-									</Link>
-								</li>
-							);
-						})}
-						{showRequestServiceButton && (
-							<li className="flex items-center max-lg:hidden">
-								<Button size="sm" asChild>
-									<Link href="/request-service">Request Service</Link>
-								</Button>
-							</li>
-						)}
-					</ul>
-
-					{/* Mobile menu trigger */}
-					<li className="ml-auto lg:hidden">
-						<button
-							type="button"
-							className="p-4 transition-transform active:scale-90"
-							onClick={() => setOpen(!open)}
-						>
-							{open ? <XIcon /> : <MenuIcon />}
-						</button>
-					</li>
-				</ul>
-
-				{/* Mobile menu */}
-				<AnimatePresence>
-					{open && (
-						<motion.ul
-							initial="initial"
-							animate="animate"
-							exit="initial"
-							variants={fadeInVariants}
-							className={cn(
-								"-mx-4 absolute flex w-full flex-col overflow-hidden border-white/20 border-t backdrop-blur-xs",
+		<>
+			<motion.header
+				className={cn(
+					"z-30 w-full",
+					mode === "dark" ? "bg-black/5" : "bg-white",
+					open && isMobile && (mode === "dark" ? "bg-black/80" : "bg-white/80"),
+					scrollStatus.isInView
+						? "relative"
+						: cn(
+								"-translate-y-full fixed backdrop-blur-xs",
 								mode === "dark" ? "bg-black/80" : "bg-white/80",
-							)}
-						>
+							),
+				)}
+				animate={{ y: scrollStatus.isInView ? 0 : "100%" }}
+			>
+				<nav data-slot="header-nav" className="px-4">
+					<ul
+						className="container mx-auto flex justify-between gap-8 py-3"
+						style={{ height: HEADER_HEIGHT }}
+					>
+						<li className="self-center">
+							<Link href="/">
+								<Image
+									src={mode === "dark" ? logoLight : logo}
+									alt="Fastline Logo"
+								/>
+							</Link>
+						</li>
+
+						<ul className="flex gap-3">
 							{links.map((link) => {
 								const isActive = isLinkActive(link.href);
 								return (
-									<li key={link.name}>
+									<li key={link.name} className="flex max-lg:hidden">
 										<Link
 											href={link.href}
 											className={cn(
-												"block px-6 py-4",
-												mode === "dark"
-													? "hover:bg-white/10"
-													: "hover:bg-black/10",
-												isActive &&
-													(mode === "dark" ? "bg-black/10" : "bg-white/10"),
+												"flex items-center px-5",
+												isActive
+													? "font-bold underline decoration-2 underline-offset-3"
+													: "opacity-60 hover:font-bold hover:opacity-100",
 											)}
 											data-not-link
 										>
@@ -199,21 +146,86 @@ export const Header = ({
 								);
 							})}
 							{showRequestServiceButton && (
-								<li
-									className={cn(
-										"block px-6 py-4",
-										mode === "dark" ? "hover:bg-white/10" : "hover:bg-black/10",
-									)}
-								>
+								<li className="flex items-center max-lg:hidden">
 									<Button size="sm" asChild>
 										<Link href="/request-service">Request Service</Link>
 									</Button>
 								</li>
 							)}
-						</motion.ul>
-					)}
-				</AnimatePresence>
-			</nav>
-		</motion.header>
+						</ul>
+
+						{/* Mobile menu trigger */}
+						<li className="ml-auto lg:hidden">
+							<button
+								type="button"
+								className="p-4 transition-transform active:scale-90"
+								onClick={() => setOpen(!open)}
+							>
+								{open ? <XIcon /> : <MenuIcon />}
+							</button>
+						</li>
+					</ul>
+
+					{/* Mobile menu */}
+					<AnimatePresence>
+						{open && (
+							<motion.ul
+								initial="initial"
+								animate="animate"
+								exit="initial"
+								variants={fadeInVariants}
+								className={cn(
+									"-mx-4 absolute flex w-full flex-col overflow-hidden border-white/20 border-t backdrop-blur-xs",
+									mode === "dark" ? "bg-black/80" : "bg-white/80",
+								)}
+							>
+								{links.map((link) => {
+									const isActive = isLinkActive(link.href);
+									return (
+										<li key={link.name}>
+											<Link
+												href={link.href}
+												className={cn(
+													"block px-6 py-4",
+													mode === "dark"
+														? "hover:bg-white/10"
+														: "hover:bg-black/10",
+													isActive &&
+														(mode === "dark" ? "bg-black/10" : "bg-white/10"),
+												)}
+												data-not-link
+											>
+												{link.name}
+											</Link>
+										</li>
+									);
+								})}
+								{showRequestServiceButton && (
+									<li
+										className={cn(
+											"block px-6 py-4",
+											mode === "dark"
+												? "hover:bg-white/10"
+												: "hover:bg-black/10",
+										)}
+									>
+										<Button size="sm" asChild>
+											<Link href="/request-service">Request Service</Link>
+										</Button>
+									</li>
+								)}
+							</motion.ul>
+						)}
+					</AnimatePresence>
+				</nav>
+			</motion.header>
+			{!scrollStatus.isInView && (
+				<div
+					aria-hidden
+					className="pointer-events-none"
+					style={{ height: HEADER_HEIGHT }}
+				/>
+			)}
+		</>
 	);
 };

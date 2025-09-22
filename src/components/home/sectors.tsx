@@ -1,53 +1,13 @@
 "use client";
-import {
-	ChevronRightIcon,
-	HospitalIcon,
-	HouseIcon,
-	SettingsIcon,
-} from "lucide-react";
+import { ChevronRightIcon } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
-import { partners } from "@/lib/data";
+import { partners, sectors } from "@/lib/data";
 import { appearVariants, appearViewport, MotionLink } from "@/lib/motion.util";
 import { cn } from "@/lib/utils";
 import { SectionHeading } from "../hero";
-import { IndustryIcon, OilBarrelIcon } from "../icons";
+import { IndustryIcon } from "../icons";
 import { Badge } from "../ui/badge";
-
-const sectors = [
-	{
-		title: "Oil & Gas",
-		description:
-			"Specialized security solutions for refineries, drilling sites, and petrochemical facilities with advanced hazmat expertise.",
-		link: { label: "High-Risk Security", href: "#" },
-		icon: OilBarrelIcon,
-		iconColors: ["#008E40CC", "#052B8B"],
-	},
-	{
-		title: "Healthcare",
-		description:
-			"Efficient and reliable security services for healthcare facilities, ensuring a safe environment for patients, staff, and critical medical assets.",
-		link: { label: "Assert Protection", href: "#" },
-		icon: HospitalIcon,
-		iconColors: ["#052B8B80", "#052B8B"],
-	},
-	{
-		title: "Residential",
-		description:
-			"Premium security solutions for gated communities, estates, and high-value residential properties across Nigeria, ensuring safety and peace of mind.",
-		link: { label: "Personal Security", href: "#" },
-		icon: HouseIcon,
-		iconColors: ["#008E40CC", "#052B8B"],
-	},
-	{
-		title: "Manufacturing",
-		description:
-			"Specialized industrial security services for factories, warehouses, production facilities, and comprehensive supply chain protection.",
-		link: { label: "Industrial Security", href: "#" },
-		icon: SettingsIcon,
-		iconColors: ["#8E008CCC", "#052B8B"],
-	},
-];
 
 export const HomepageSectors = () => {
 	return (
@@ -126,7 +86,7 @@ export const HomepageSectors = () => {
 					service and client care.
 				</motion.p>
 
-				<div className="hidden justify-center gap-4 lg:flex">
+				{/* <div className="hidden justify-center gap-4 lg:flex">
 					{partners.map((partner) => {
 						const { name, image } = partner;
 						return (
@@ -136,7 +96,7 @@ export const HomepageSectors = () => {
 							</div>
 						);
 					})}
-				</div>
+				</div> */}
 
 				<PartnersMarquee />
 			</div>
@@ -146,7 +106,7 @@ export const HomepageSectors = () => {
 
 const PartnersMarquee = () => {
 	return (
-		<div className="relative w-full overflow-hidden bg-gray-100 py-6 lg:hidden">
+		<div className="relative w-full overflow-hidden bg-gray-100 py-6">
 			<motion.div
 				className="flex gap-6"
 				animate={{ x: ["0%", "-100%"] }}
@@ -157,12 +117,12 @@ const PartnersMarquee = () => {
 				}}
 			>
 				{/* Duplicate the images twice for seamless looping */}
-				{[...partners, ...partners].map((partner, i) => (
+				{[...partners, ...partners, ...partners].map((partner, i) => (
 					<Image
 						key={partner.name + String(i)}
 						src={partner.image}
 						alt={partner.name}
-						className="h-8 w-auto shrink-0 rounded-lg object-cover shadow-md"
+						className="h-8 w-auto shrink-0 rounded-lg object-cover shadow-md lg:h-9"
 					/>
 				))}
 			</motion.div>

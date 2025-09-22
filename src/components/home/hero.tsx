@@ -15,7 +15,7 @@ const heroContentVariants = {
 
 export const HomepageHero = () => {
 	return (
-		<div className="relative flex h-299 flex-col overflow-hidden text-white md:h-218.75 lg:h-193.75">
+		<div className="relative flex h-218.75 flex-col overflow-hidden text-white md:h-218.75 lg:h-193.75">
 			<MotionImage
 				src={homepageHeroImage}
 				initial={{ scale: 1.2 }}
@@ -24,17 +24,17 @@ export const HomepageHero = () => {
 				className="-z-10 absolute inset-0 size-full object-cover max-md:object-[75%]"
 			/>
 			<Header showRequestServiceButton={false} />
-			<div className="my-auto px-4">
+			<div className="mt-20 px-4">
 				<motion.div
 					initial="initial"
 					animate="animate"
-					className="container mx-auto flex items-center justify-between max-lg:flex-col max-lg:gap-10"
+					className="container mx-auto flex items-center justify-between max-lg:flex-col md:gap-10 lg:gap-4"
 				>
 					{/* Hero content */}
 					<motion.div
 						variants={heroContentVariants}
 						custom={1}
-						className="flex max-w-137.5 basis-1/2 flex-col gap-8 max-lg:items-center max-lg:text-center md:gap-6"
+						className="flex max-w-137.5 basis-1/2 flex-col max-lg:items-center max-lg:text-center"
 					>
 						<MotionBadge
 							variants={heroContentVariants}
@@ -47,7 +47,7 @@ export const HomepageHero = () => {
 						<motion.h1
 							variants={heroContentVariants}
 							custom={2}
-							className="font-bold text-5xl md:text-[54px] lg:text-6xl"
+							className="my-8 font-bold text-5xl md:text-[54px] lg:my-6 lg:text-6xl"
 						>
 							Professional <span className="text-primary-light">Security</span>{" "}
 							& <span className="text-primary-light">Safety</span> Solutions
@@ -64,7 +64,7 @@ export const HomepageHero = () => {
 						<motion.div
 							variants={heroContentVariants}
 							custom={4}
-							className="mt-15 flex gap-4 self-stretch *:flex-1 max-md:mb-15 lg:mt-16"
+							className="mt-15 mb-25 flex gap-4 self-stretch *:flex-1 md:mb-15 lg:mt-11"
 						>
 							<Button asChild>
 								<Link href="/request-service">Request service</Link>
@@ -74,20 +74,21 @@ export const HomepageHero = () => {
 							</Button>
 						</motion.div>
 					</motion.div>
+
 					{/* Hero cards */}
-					<div className="grid grid-cols-[repeat(2,auto)] gap-4 text-center max-lg:justify-between max-lg:self-stretch lg:grid-cols-2 lg:gap-20">
+					<div className="grid grid-cols-[repeat(2,180px)] gap-6.5 text-center max-md:mb-23.5 max-lg:justify-center max-lg:self-stretch md:grid-cols-[repeat(4,170px)] lg:grid-cols-[repeat(2,210px)] lg:gap-20">
 						{stats.map((stat, i) => (
 							<motion.div
 								initial={{ opacity: 0, scale: 0.3 }}
 								animate={{ opacity: 1, scale: 1 }}
 								transition={{ delay: 0.1 * i }}
 								key={stat.label + stat.value}
-								className="flex max-w-42.5 flex-col items-center justify-center gap-2 rounded-md border bg-white/5 p-4 py-8 backdrop-blur-xs max-md:h-27.5 max-md:grow lg:h-30 lg:w-52.5"
+								className="flex h-27.5 flex-col items-center justify-center gap-2 rounded-md border bg-white/5 px-2 py-8 backdrop-blur-xs lg:h-30"
 							>
 								<span className="font-bold font-michroma text-2xl">
 									{stat.value}
 								</span>
-								<span className="md:text-lg">{stat.label}</span>
+								<span className="lg:text-lg">{stat.label}</span>
 							</motion.div>
 						))}
 					</div>

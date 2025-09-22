@@ -88,7 +88,7 @@ export const HomepageWhyUs = () => {
 								initial="initial"
 								viewport={appearViewport}
 								key={title}
-								className="flex max-w-105 items-start gap-4"
+								className="flex items-start gap-4 md:max-w-87.5 lg:max-w-111.75"
 							>
 								<div className="flex-0 rounded bg-white/5 p-4">
 									<Icon className="size-6" />

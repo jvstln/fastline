@@ -1,8 +1,8 @@
 "use client";
 import { motion, stagger } from "motion/react";
 import { useBreakpoint } from "@/hooks/use-breakpoint";
-import { clients } from "@/lib/data";
-import { appearVariants, appearViewport, MotionImage } from "@/lib/motion.util";
+import { sectors } from "@/lib/data";
+import { appearVariants, MotionImage } from "@/lib/motion.util";
 import { SectionHeading } from "../hero";
 import { DoubleCogIcon } from "../icons";
 import { Badge } from "../ui/badge";
@@ -31,7 +31,7 @@ export const AboutClients = () => {
 				/>
 
 				<div className="mt-15 flex flex-col gap-10 lg:gap-15">
-					{clients.map((client, i) => {
+					{sectors.map((client, i) => {
 						const image = (
 							<MotionImage
 								src={client.image}
@@ -62,12 +62,13 @@ export const AboutClients = () => {
 							<motion.div
 								initial="initial"
 								whileInView="animate"
+								animate="animate"
 								transition={{
 									delayChildren: stagger(0.2),
 								}}
 								variants={appearVariants}
-								viewport={appearViewport}
 								key={client.title}
+								id={client.link.href.replace(/.+#/, "")}
 								className="flex items-center gap-10 max-md:flex-col"
 							>
 								{shouldFlip ? content : image}

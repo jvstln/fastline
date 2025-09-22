@@ -34,8 +34,8 @@ export const AboutCompanyOverview = () => {
 				/>
 
 				{/* Quote */}
-				<div className="relative pr-22.75 pb-32">
-					<div className="relative z-20 flex max-w-151.5 flex-col gap-6 rounded-sm bg-background px-8 py-12 font-semibold text-2xl shadow-md">
+				<div className="relative pr-12.5 pb-32 md:pr-22.75">
+					<div className="relative z-20 flex max-w-151.5 flex-col gap-6 rounded-sm bg-background px-8 py-12 font-semibold text-xl shadow-md md:text-2xl">
 						<QuoteIcon className="text-primary" />
 						<blockquote>
 							Committed to securing what matters most, with{" "}
@@ -51,25 +51,25 @@ export const AboutCompanyOverview = () => {
 				</div>
 			</div>
 
-			<div className="my-8 flex items-center gap-20 *:flex-1 max-lg:mt-16 max-lg:flex-col-reverse">
+			<div className="container mx-auto my-8 flex items-center gap-20 *:flex-1 max-lg:mt-16 max-lg:flex-col-reverse">
 				{/* Hero cards */}
 				<motion.div
 					variants={appearVariants}
 					whileInView="animate"
 					viewport={appearViewport}
 					transition={{ delayChildren: stagger(0.2) }}
-					className="grid grid-cols-[repeat(2,auto)] gap-3"
+					className="grid max-w-123 grid-cols-2 gap-4 sm:gap-12.5 sm:gap-y-13.5 md:gap-x-13"
 				>
 					{stats.map((stat) => (
 						<motion.div
 							variants={appearVariants}
 							key={stat.label + stat.value}
-							className="flex max-w-55 grow flex-col items-center justify-center gap-2 rounded-md border bg-background px-8 py-7 text-center shadow-md backdrop-blur-xs"
+							className="flex max-w-42.5 grow flex-col items-center justify-center gap-2 rounded-md border bg-background px-2 py-7 text-center shadow-md backdrop-blur-xs md:max-w-55 md:px-6"
 						>
 							<span className="font-bold font-michroma text-3xl text-primary-light">
 								{stat.value}
 							</span>
-							<span className="font-semibold text-lg">{stat.label}</span>
+							<span className="font-semibold md:text-lg">{stat.label}</span>
 						</motion.div>
 					))}
 				</motion.div>
@@ -78,7 +78,7 @@ export const AboutCompanyOverview = () => {
 					variants={appearVariants}
 					whileInView="animate"
 					viewport={appearViewport}
-					className="text-lg max-lg:text-center"
+					className="text-justify text-[15px] md:text-center md:text-lg lg:text-justify"
 				>
 					Our services are designed to meet the evolving security demands of
 					sectors such as oil and gas, telecommunications, finance, residential
@@ -89,7 +89,7 @@ export const AboutCompanyOverview = () => {
 			</div>
 
 			{/* Vision and mission */}
-			<div className="flex gap-8 *:flex-1 max-lg:flex-col max-lg:items-center">
+			<div className="container mx-auto flex items-center justify-between gap-8 max-lg:flex-col max-lg:items-center">
 				<MotionImage
 					variants={appearVariants}
 					initial="initial"
@@ -97,7 +97,7 @@ export const AboutCompanyOverview = () => {
 					viewport={appearViewport}
 					src={visionAndMissionImage}
 					alt="Vision and Mission"
-					className="-mb-12 size-full"
+					className="-mb-12 size-full max-w-129.5"
 				/>
 				<motion.div className="flex flex-col gap-10 text-primary-light">
 					{vissionAndMission.map((item) => (
@@ -106,7 +106,13 @@ export const AboutCompanyOverview = () => {
 							variants={appearVariants}
 							whileInView="animate"
 							viewport={appearViewport}
-							className="flex max-w-125 grow flex-col justify-center gap-6 rounded-sm bg-linear-45 from-5% from-primary/5 px-8 py-12 shadow-md"
+							className="flex max-w-125 grow flex-col justify-center gap-6 rounded-sm px-8 py-12"
+							style={{
+								background:
+									"linear-gradient(252.65deg, #F4F7FB 5.21%, #FFFFFF 82%, #F4F7FB 100.01%)",
+								boxShadow:
+									"0px 2px 4px rgba(5, 43, 139, 0.04), 0px 3px 8px rgba(5, 43, 139, 0.16)",
+							}}
 						>
 							<h3 className="flex items-center gap-2 font-bold text-lg">
 								<item.icon />
