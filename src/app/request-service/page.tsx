@@ -16,7 +16,7 @@ const RequestServicePage = () => {
 				badge={true}
 			/>
 			<section
-				className="-mt-49.25 mx-auto max-w-230.5 bg-background px-15 py-13.75"
+				className="-mt-49.25 relative z-10 mx-auto max-w-230.5 bg-background px-15 py-13.75"
 				style={{
 					boxShadow: "0px 3px 8px rgba(5, 43, 139, 0.12)",
 				}}

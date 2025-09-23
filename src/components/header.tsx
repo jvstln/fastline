@@ -81,8 +81,6 @@ export const Header = ({
 				isInView,
 			};
 		});
-
-		console.log("in view", isInView, latest - previous > 0 ? "down" : "up");
 	});
 
 	const isLinkActive = (href: string) => {

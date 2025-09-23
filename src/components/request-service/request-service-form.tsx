@@ -1,7 +1,12 @@
 "use client";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { ScrollTextIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { sendRequestServiceEmail } from "@/actions/send-email";
+import { type RequestService, requestServiceSchema } from "@/lib/schema";
 import { Button } from "../ui/button";
+import { Combobox } from "../ui/combobox";
 import {
 	Form,
 	FormControl,
@@ -22,24 +27,54 @@ import { Textarea } from "../ui/textarea";
 
 export const RequestServiceForm = () => {
 	const form = useForm({
+		resolver: zodResolver(requestServiceSchema),
+		// defaultValues: {
+		// 	name: "",
+		// 	company: "",
+		// 	email: "",
+		// 	phone: "",
+		// 	sector: "",
+		// 	service: "",
+		// 	location: "",
+		// 	projectDetails: "",
+		// 	preferredContactMethod: "",
+		// },
 		defaultValues: {
-			name: "",
-			company: "",
-			email: "",
-			phone: "",
-			sector: "",
-			service: "",
-			location: "",
-			projectDetails: "",
-			preferredContactMethod: "",
+			name: "jj",
+			company: "jjfjf",
+			email: "cadomint@gmail.com",
+			phone: "09039393939",
+			sector: "banking-finance",
+			service: "hhjjf",
+			location: "enugu",
+			projectDetails: "12344",
+			preferredContactMethod: "email",
 		},
 	});
+
+	const handleSubmit = async (values: RequestService) => {
+		const formData = new FormData();
+
+		Object.entries(values).forEach(([key, value]) => {
+			formData.append(key, value);
+		});
+
+		const response = await sendRequestServiceEmail(formData);
+		if (!response.success) {
+			toast.error("Error submitting request", {
+				description: response.message,
+			});
+		}
+	};
 
 	const FormField = useFormFieldComponent(form.control);
 
 	return (
 		<Form {...form}>
-			<form className="flex flex-col gap-10">
+			<form
+				className="flex flex-col gap-10"
+				onSubmit={form.handleSubmit(handleSubmit)}
+			>
 				<div className="mx-auto flex max-w-149.5 flex-col items-center gap-1 bg-background text-center">
 					<ScrollTextIcon className="size-15.5 text-primary" />
 					<h2 className="font-semibold text-2xl">Request Service</h2>
@@ -139,35 +174,20 @@ export const RequestServiceForm = () => {
 						render={({ field }) => (
 							<FormItem>
 								<FormLabel>Type of Service Needed</FormLabel>
-								<FormControl>
-									<Select value={field.value} onValueChange={field.onChange}>
-										<FormControl>
-											<SelectTrigger>
-												<SelectValue placeholder="Select the service you need" />
-											</SelectTrigger>
-										</FormControl>
-										<SelectContent>
-											<SelectItem value="security-guard">
-												Security Guard Services
-											</SelectItem>
-											<SelectItem value="emergency-response">
-												Emergency Response
-											</SelectItem>
-											<SelectItem value="24-7-monitoring">
-												24/7 Monitoring
-											</SelectItem>
-											<SelectItem value="risk-assessment">
-												Risk Assessment
-											</SelectItem>
-											<SelectItem value="safety-training">
-												Safety Training
-											</SelectItem>
-											<SelectItem value="compliance-audit">
-												Compliance Audit
-											</SelectItem>
-										</SelectContent>
-									</Select>
-								</FormControl>
+								<Combobox
+									options={[
+										"Security Guard Services",
+										"Emergency Response",
+										"24/7 Monitoring",
+										"Risk Assessment",
+										"Safety Training",
+										"Compliance Audit",
+									]}
+									placeholder="Enter the service you need"
+									formControl
+									value={field.value}
+									onValueChange={field.onChange}
+								/>
 								<FormMessage />
 							</FormItem>
 						)}
@@ -225,7 +245,12 @@ export const RequestServiceForm = () => {
 						)}
 					/>
 
-					<Button size="lg" className="mx-auto w-full max-w-150">
+					<Button
+						size="lg"
+						className="mx-auto w-full max-w-150"
+						isLoading={form.formState.isSubmitting}
+						loadingText="Submitting..."
+					>
 						Submit
 					</Button>
 				</div>

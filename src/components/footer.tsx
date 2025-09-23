@@ -1,34 +1,33 @@
 import { MailIcon, MapPinIcon, PhoneIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { socialLinks } from "@/lib/data";
+import { sectors, services, socialLinks } from "@/lib/data";
 import logo from "@/public/logo-light.svg";
 
-const serviceLinks = [
-	{ name: "Security Operations", href: "#" },
-	{ name: "Risk & Compliance Solutions", href: "#" },
-	{ name: "Training & Capacity Building", href: "#" },
-	{ name: "Security Systems & Equipment", href: "#" },
-];
-
-const industryLinks = [
-	{ name: "Oil & Gas", href: "#" },
-	{ name: "Healthcare", href: "#" },
-	{ name: "Residential", href: "#" },
-	{ name: "Manufacturing", href: "#" },
-];
-
-const companyLinks = [
-	{ name: "Home", href: "/" },
-	{ name: "Our Services", href: "/services" },
-	{ name: "About Us", href: "/about" },
-	{ name: "Contact Us", href: "/contact" },
-];
-
 const quickLinks = [
-	{ title: "Our Services", links: serviceLinks },
-	{ title: "Industries", links: industryLinks },
-	{ title: "Company", links: companyLinks },
+	{
+		title: "Our Services",
+		links: services.map((service) => ({
+			name: service.title,
+			href: service.link,
+		})),
+	},
+	{
+		title: "Industries",
+		links: sectors.map((sector) => ({
+			name: sector.title,
+			href: sector.link.href,
+		})),
+	},
+	{
+		title: "Company",
+		links: [
+			{ name: "Home", href: "/" },
+			{ name: "Our Services", href: "/services" },
+			{ name: "About Us", href: "/about" },
+			{ name: "Contact Us", href: "/contact" },
+		],
+	},
 ];
 
 export const Footer = () => {

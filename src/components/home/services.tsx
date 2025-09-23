@@ -2,35 +2,12 @@
 import { motion } from "motion/react";
 import Link from "next/link";
 import { useBreakpoint } from "@/hooks/use-breakpoint";
+import { services } from "@/lib/data";
 import { appearVariants, MotionButton, MotionImage } from "@/lib/motion.util";
-import riskAndComplianceImage from "@/public/images/risk-and-compliance-solutions.png";
-import securityOperationsImage from "@/public/images/security-operations.png";
-import trainingAndCapacityBuildingImage from "@/public/images/training-and-capacity-building.png";
 import { SectionHeading } from "../hero";
 import { DoubleCogIcon, ShieldIcon } from "../icons";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
-
-const services = [
-	{
-		image: securityOperationsImage,
-		title: "Security Operations",
-		description:
-			"Fastline provides dependable physical security through highly trained guards, 24/7 monitoring, and rapid emergency response. We combine expert personnel with real-time surveillance systems to safeguard lives, property, and sensitive environments. Core offerings include Security Guard Services, 24/7 Monitoring, Emergency Response, and Security Systems & Equipment",
-	},
-	{
-		image: riskAndComplianceImage,
-		title: "Risk & Compliance Solutions",
-		description:
-			"We help organizations identify vulnerabilities, meet industry standards, and maintain regulatory readiness. Our risk and compliance services are designed to reduce exposure and improve operational safety. Core offerings include Risk Assessments, Compliance Support, and Hazard & Incident Management.",
-	},
-	{
-		image: trainingAndCapacityBuildingImage,
-		title: "Training & Capacity Building",
-		description:
-			"Our expert personnel offers industry-focused training that equips personnel and client teams with the knowledge and skills to act decisively in emergencies and uphold safety standards. Key programs include Safety Training, Security Guard Training, and IED Awareness & Emergency Drills.",
-	},
-];
 
 export const HomepageServices = () => {
 	const isTablet = useBreakpoint("max-md");
@@ -86,6 +63,7 @@ export const HomepageServices = () => {
 
 							return (
 								<motion.div
+									id={service.link.replace(/.+#/, "")}
 									whileInView="animate"
 									initial="initial"
 									viewport={{ amount: 0.2, once: true }}
@@ -128,8 +106,8 @@ export const HomepageServices = () => {
 						}
 						classNames={{ root: "mb-20 max-w-161.5" }}
 					/>
-					<Button size="lg" className="w-75">
-						Request Service
+					<Button size="lg" className="w-75" asChild>
+						<Link href="/request-service">Request Service</Link>
 					</Button>
 				</div>
 			</section>

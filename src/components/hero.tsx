@@ -38,7 +38,7 @@ export const PageHero = (props: PageHeroProps) => {
 				initial={{ scale: 1.2 }}
 				animate={{ scale: 1 }}
 				transition={{ duration: 1 }}
-				alt={props.title}
+				alt={props.title || ""}
 				className="-z-10 absolute inset-0 size-full object-cover"
 				fill
 			/>

@@ -33,7 +33,13 @@ export const HomepageSectors = () => {
 
 				<div className="mt-15 grid justify-center gap-15 md:grid-cols-[repeat(2,auto)] md:gap-20">
 					{sectors.map((sector, i) => {
-						const { title, description, link, iconColors, icon: Icon } = sector;
+						const {
+							title,
+							briefDescription,
+							link,
+							iconColors,
+							icon: Icon,
+						} = sector;
 
 						return (
 							<MotionLink
@@ -63,7 +69,7 @@ export const HomepageSectors = () => {
 									<Icon className="size-6 text-white" />
 								</div>
 								<h4 className="font-bold text-xl">{title}</h4>
-								<p>{description}</p>
+								<p>{briefDescription}</p>
 								<span className="flex gap-2 font-bold text-primary group-hover:hidden">
 									{link.label} <ChevronRightIcon />
 								</span>
