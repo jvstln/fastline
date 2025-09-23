@@ -2,7 +2,7 @@
 import { motion } from "motion/react";
 import Link from "next/link";
 import { useBreakpoint } from "@/hooks/use-breakpoint";
-import { services } from "@/lib/data";
+import { homepageServices } from "@/lib/data";
 import { appearVariants, MotionButton, MotionImage } from "@/lib/motion.util";
 import { SectionHeading } from "../hero";
 import { DoubleCogIcon, ShieldIcon } from "../icons";
@@ -32,25 +32,30 @@ export const HomepageServices = () => {
 						}
 					/>
 
-					<div className="mt-16 flex flex-col gap-20 md:gap-2">
-						{services.map((service, i) => {
+					<div className="mt-16 flex flex-col gap-20 lg:gap-10">
+						{homepageServices.map((service, i) => {
 							const image = (
-								<MotionImage
-									variants={appearVariants}
-									src={service.image}
-									alt={service.title}
-									className="max-md:-mb-10 mx-auto h-auto w-113 object-contain"
-								/>
+								<div className="mx-auto flex max-h-94 size-full max-w-113 grow justify-center">
+									<MotionImage
+										variants={appearVariants}
+										src={service.image}
+										alt={service.title}
+										className="max-md:-mb-10 -ml-10 size-full object-contain"
+									/>
+								</div>
 							);
 							const content = (
-								<motion.div className="flex flex-col items-start text-justify">
+								<motion.div className="flex w-full max-w-157.75 flex-col items-start text-justify">
 									<motion.h3
 										variants={appearVariants}
-										className="mb-3 text-left font-semibold text-xl"
+										className="mb-3 text-left font-semibold text-lg md:text-xl"
 									>
 										{service.title}
 									</motion.h3>
-									<motion.p variants={appearVariants} className="mb-8">
+									<motion.p
+										variants={appearVariants}
+										className="mb-8 max-md:text-[15px]/[1.7]"
+									>
 										{service.description}
 									</motion.p>
 									<MotionButton variants={appearVariants} asChild>

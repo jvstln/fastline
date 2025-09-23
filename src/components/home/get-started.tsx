@@ -24,6 +24,7 @@ export const HomepageGetStarted = () => {
 						Ready to get started?
 					</Badge>
 				}
+				classNames={{ subtitle: "font-medium text-lg" }}
 			/>
 			<Button className="mx-auto my-20" asChild>
 				<Link href="/request-service">Request service</Link>

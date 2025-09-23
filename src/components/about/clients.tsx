@@ -46,11 +46,14 @@ export const AboutClients = () => {
 							>
 								<motion.h3
 									variants={appearVariants}
-									className="text-left font-bold text-2xl"
+									className="text-left font-bold text-lg md:text-2xl"
 								>
 									{client.title}
 								</motion.h3>
-								<motion.p variants={appearVariants}>
+								<motion.p
+									variants={appearVariants}
+									className="max-md:text-[15px]/[1.7]"
+								>
 									{client.description}
 								</motion.p>
 							</motion.div>

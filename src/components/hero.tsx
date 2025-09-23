@@ -69,7 +69,7 @@ export const PageHero = (props: PageHeroProps) => {
 						<motion.h1
 							variants={appearVariants}
 							className={cn(
-								"font-extrabold text-[2.75rem]",
+								"font-extrabold text-[2rem] md:text-[2.75rem]",
 								props.classNames?.title,
 							)}
 						>

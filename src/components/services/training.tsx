@@ -35,6 +35,7 @@ export const TrainingAndCapacityBuilding = () => {
 
 	return (
 		<section
+			id={"training-and-capacity-building"}
 			className="p-0 text-white lg:py-20"
 			style={{
 				background: `linear-gradient(#0008, #0008), url('/images/training-and-capacity-building-2.png') no-repeat center center/cover`,
@@ -61,8 +62,9 @@ export const TrainingAndCapacityBuilding = () => {
 						<SectionHeading
 							title={
 								<>
-									Train for <span className="text-primary">Readiness</span>. Act
-									with <span className="text-primary">Confidence</span>.
+									Train for{" "}
+									<span className="text-primary-light">Readiness</span>. Act
+									with <span className="text-primary-light">Confidence</span>.
 								</>
 							}
 							subtitle="We equip your teams and ours with hands-on safety, emergency, and security training—ensuring skill, confidence, and compliance on the job."
@@ -71,6 +73,7 @@ export const TrainingAndCapacityBuilding = () => {
 							}
 							classNames={{
 								root: "mb-13.5 lg:items-start lg:text-left",
+								title: "max-md:text-2xl",
 							}}
 						/>
 

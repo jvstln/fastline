@@ -15,7 +15,7 @@ const heroContentVariants = {
 
 export const HomepageHero = () => {
 	return (
-		<div className="relative flex h-218.75 flex-col overflow-hidden text-white md:h-218.75 lg:h-193.75">
+		<div className="relative flex min-h-218.75 flex-col overflow-hidden text-white md:h-218.75 lg:h-193.75">
 			<MotionImage
 				src={homepageHeroImage}
 				initial={{ scale: 1.2 }}
@@ -55,7 +55,7 @@ export const HomepageHero = () => {
 						<motion.p
 							variants={heroContentVariants}
 							custom={3}
-							className="max-w-[60ch] text-xl"
+							className="max-w-[60ch] text-lg md:text-xl"
 						>
 							Experts in security services, compliance audits and professional
 							training, safeguarding assets and ensuring compliance across key
@@ -76,7 +76,7 @@ export const HomepageHero = () => {
 					</motion.div>
 
 					{/* Hero cards */}
-					<div className="grid grid-cols-[repeat(2,180px)] gap-6.5 text-center max-md:mb-23.5 max-lg:justify-center max-lg:self-stretch md:grid-cols-[repeat(4,170px)] lg:grid-cols-[repeat(2,210px)] lg:gap-20">
+					<div className="grid grid-cols-[repeat(2,minmax(auto,180px))] gap-6.5 text-center max-md:mb-23.5 max-lg:justify-center max-lg:self-stretch md:grid-cols-[repeat(4,170px)] lg:grid-cols-[repeat(2,210px)] lg:gap-20">
 						{stats.map((stat, i) => (
 							<motion.div
 								initial={{ opacity: 0, scale: 0.3 }}

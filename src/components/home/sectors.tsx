@@ -68,7 +68,7 @@ export const HomepageSectors = () => {
 								>
 									<Icon className="size-6 text-white" />
 								</div>
-								<h4 className="font-bold text-xl">{title}</h4>
+								<h4 className="font-bold text-lg md:text-xl">{title}</h4>
 								<p>{briefDescription}</p>
 								<span className="flex gap-2 font-bold text-primary group-hover:hidden">
 									{link.label} <ChevronRightIcon />
@@ -85,24 +85,12 @@ export const HomepageSectors = () => {
 					variants={appearVariants}
 					initial="initial"
 					whileInView="animate"
-					className="mx-auto mt-12 mb-8 max-w-[66ch] text-center"
+					className="mx-auto mt-12 mb-8 max-w-196 text-center font-medium text-lg"
 				>
 					We have a proven track record of delivering meticulous and bespoke
 					solutions backed by a commitment to the highest levels of quality,
 					service and client care.
 				</motion.p>
-
-				{/* <div className="hidden justify-center gap-4 lg:flex">
-					{partners.map((partner) => {
-						const { name, image } = partner;
-						return (
-							<div key={name} className="relative size-32">
-								<Image src={image} alt={name} className="object-contain" fill />
-								<span className="sr-only">{name}</span>
-							</div>
-						);
-					})}
-				</div> */}
 
 				<PartnersMarquee />
 			</div>

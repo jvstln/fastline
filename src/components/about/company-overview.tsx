@@ -29,7 +29,8 @@ export const AboutCompanyOverview = () => {
 					}
 					classNames={{
 						root: "lg:items-start lg:text-left",
-						subtitle: "text-justify md:text-center lg:text-justify",
+						subtitle:
+							"text-justify max-md:text-[15px]/[1.7] md:text-center lg:text-justify",
 					}}
 				/>
 
@@ -78,7 +79,7 @@ export const AboutCompanyOverview = () => {
 					variants={appearVariants}
 					whileInView="animate"
 					viewport={appearViewport}
-					className="text-justify text-[15px] md:text-center md:text-lg lg:text-justify"
+					className="text-justify text-[15px]/[1.7] md:text-center md:text-lg lg:text-justify"
 				>
 					Our services are designed to meet the evolving security demands of
 					sectors such as oil and gas, telecommunications, finance, residential

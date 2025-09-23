@@ -95,6 +95,7 @@ export const contactInfo = [
 		title: "Phone",
 		value: "+234(0)708-537-5500",
 		icon: PhoneIcon,
+		hash: "phone",
 	},
 	{
 		title: "Email",
@@ -136,7 +137,7 @@ export const vissionAndMission = [
 	},
 ];
 
-export const services = [
+export const homepageServices = [
 	{
 		image: securityOperationsImage,
 		title: "Security Operations",

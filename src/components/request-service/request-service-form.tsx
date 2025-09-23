@@ -28,27 +28,16 @@ import { Textarea } from "../ui/textarea";
 export const RequestServiceForm = () => {
 	const form = useForm({
 		resolver: zodResolver(requestServiceSchema),
-		// defaultValues: {
-		// 	name: "",
-		// 	company: "",
-		// 	email: "",
-		// 	phone: "",
-		// 	sector: "",
-		// 	service: "",
-		// 	location: "",
-		// 	projectDetails: "",
-		// 	preferredContactMethod: "",
-		// },
 		defaultValues: {
-			name: "jj",
-			company: "jjfjf",
-			email: "cadomint@gmail.com",
-			phone: "09039393939",
-			sector: "banking-finance",
-			service: "hhjjf",
-			location: "enugu",
-			projectDetails: "12344",
-			preferredContactMethod: "email",
+			name: "",
+			company: "",
+			email: "",
+			phone: "",
+			sector: "",
+			service: "",
+			location: "",
+			projectDetails: "",
+			preferredContactMethod: "",
 		},
 	});
 
@@ -107,6 +96,7 @@ export const RequestServiceForm = () => {
 									<Input
 										placeholder="Your company name (if applicable)"
 										{...field}
+										value={String(field.value)}
 									/>
 								</FormControl>
 								<FormMessage />
@@ -131,7 +121,7 @@ export const RequestServiceForm = () => {
 							<FormItem>
 								<FormLabel>Phone Number (Optional)</FormLabel>
 								<FormControl>
-									<Input placeholder="Enter your phone number" {...field} />
+									<Input placeholder="Enter your phone number" {...field} value={String(field.value)} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -143,7 +133,7 @@ export const RequestServiceForm = () => {
 							<FormItem>
 								<FormLabel>Industry/Sector (Optional)</FormLabel>
 								<FormControl>
-									<Select value={field.value} onValueChange={field.onChange}>
+									<Select value={String(field.value)} onValueChange={field.onChange}>
 										<FormControl>
 											<SelectTrigger>
 												<SelectValue placeholder="Select your company's industry " />
@@ -231,7 +221,7 @@ export const RequestServiceForm = () => {
 									<Select value={field.value} onValueChange={field.onChange}>
 										<FormControl>
 											<SelectTrigger>
-												<SelectValue placeholder="Select your preferred contact method" />
+												<SelectValue placeholder="Select contact method" />
 											</SelectTrigger>
 										</FormControl>
 										<SelectContent>

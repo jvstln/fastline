@@ -73,7 +73,7 @@ export const AboutApproach = () => {
 				{/* Quote */}
 				<motion.div
 					{...scaleInProps}
-					className="row-[3/4] flex max-w-142.5 flex-col gap-2 self-center justify-self-center rounded-sm bg-neutral-800 p-8 text-xl/[1.5] md:col-[2/4] md:row-[2/3]"
+					className="row-[3/4] flex max-w-142.5 flex-col gap-2 self-center justify-self-center rounded-sm bg-neutral-800 p-8 text-lg md:col-[2/4] md:row-[2/3] md:text-xl"
 					style={{
 						boxShadow: "-13px -11px 4px rgba(0, 0, 0, 0.4)",
 					}}

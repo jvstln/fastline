@@ -1,7 +1,11 @@
 "use client";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "motion/react";
-import { useForm } from "react-hook-form";
+import { useForm, useFormState } from "react-hook-form";
+import { toast } from "sonner";
+import { sendContactEmail } from "@/actions/send-email";
 import { appearVariants, appearViewport } from "@/lib/motion.util";
+import { type Contact, contactSchema } from "@/lib/schema";
 import { MessageFastIcon } from "../icons";
 import { Button } from "../ui/button";
 import {
@@ -17,6 +21,7 @@ import { Textarea } from "../ui/textarea";
 
 export const ContactForm = () => {
 	const form = useForm({
+		resolver: zodResolver(contactSchema),
 		defaultValues: {
 			name: "",
 			email: "",
@@ -24,7 +29,26 @@ export const ContactForm = () => {
 			message: "",
 		},
 	});
+
 	const FormField = useFormFieldComponent(form.control);
+
+	const handleSubmit = async (values: Contact) => {
+		const formData = new FormData();
+
+		Object.entries(values).forEach(([key, value]) => {
+			formData.append(key, value);
+		});
+
+		const response = await sendContactEmail(formData);
+
+		if (!response.success) {
+			toast.error("Error submitting request", {
+				description: response.message,
+			});
+		}
+
+		toast.success("Message sent");
+	};
 
 	return (
 		<Form {...form}>
@@ -35,6 +59,7 @@ export const ContactForm = () => {
 				viewport={appearViewport}
 				id={"contact-form"}
 				className="mx-auto flex max-w-2xl flex-col gap-6 p-2"
+				onSubmit={form.handleSubmit(handleSubmit)}
 			>
 				<motion.div
 					variants={appearVariants}
@@ -45,7 +70,7 @@ export const ContactForm = () => {
 				>
 					<MessageFastIcon className="size-23 text-primary" />
 					<h2 className="font-semibold text-2xl">Contact Us</h2>
-					<p>
+					<p className="text-lg">
 						For further enquiries or any questions, feel free to send us a
 						message.
 					</p>
@@ -92,7 +117,7 @@ export const ContactForm = () => {
 					name="message"
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Name</FormLabel>
+							<FormLabel>Message</FormLabel>
 							<FormControl>
 								<Textarea placeholder="Write your message" {...field} />
 							</FormControl>
@@ -100,13 +125,23 @@ export const ContactForm = () => {
 						</FormItem>
 					)}
 				/>
-				<Button
-					className="w-full self-center sm:w-1/2"
-					disabled={!form.formState.isValid}
-				>
-					Submit
-				</Button>
+				<SubmitButton />
 			</motion.form>
 		</Form>
+	);
+};
+
+const SubmitButton = () => {
+	const formState = useFormState();
+
+	return (
+		<Button
+			className="w-full self-center sm:w-1/2"
+			disabled={!formState.isValid}
+			isLoading={formState.isSubmitting}
+			loadingText="Sending..."
+		>
+			Submit
+		</Button>
 	);
 };

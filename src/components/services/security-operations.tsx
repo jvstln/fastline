@@ -65,7 +65,7 @@ const riskSolutions = [
 export const SecurityOperations = () => {
 	return (
 		<>
-			<section className="overflow-hidden">
+			<section className="overflow-hidden" id={"security-operations"}>
 				<div className="container mx-auto">
 					<SectionHeading
 						title={
@@ -103,15 +103,17 @@ export const SecurityOperations = () => {
 									alt={operation.title}
 									variants={appearVariants}
 									className={cn(
-										"md:-my-13 size-full w-72.25 rounded-xs object-cover max-md:mx-auto",
+										"md:-my-13 size-full w-full rounded-xs object-cover md:w-72.25",
 									)}
 								/>
 								<motion.div variants={appearVariants}>
-									<h3 className="mb-3 flex items-center gap-2.5 font-bold text-xl">
+									<h3 className="mb-3 flex items-center gap-2.5 font-bold text-lg md:text-xl">
 										<operation.icon className="size-8 rounded bg-primary/5 p-1 text-primary" />
 										{operation.title}
 									</h3>
-									<p className="text-justify">{operation.content}</p>
+									<p className="text-justify max-md:text-[15px]">
+										{operation.content}
+									</p>
 								</motion.div>
 							</motion.div>
 						))}
@@ -120,7 +122,10 @@ export const SecurityOperations = () => {
 			</section>
 
 			{/* Risk and compliance solutions */}
-			<section className="overflow-hidden bg-blue-50/50">
+			<section
+				className="overflow-hidden bg-blue-50/50"
+				id={"risk-and-compliance-solutions"}
+			>
 				<div className="container mx-auto">
 					<SectionHeading
 						title={
@@ -138,15 +143,17 @@ export const SecurityOperations = () => {
 							</Badge>
 						}
 					/>
-					<div className="mt-15 flex gap-22 max-md:flex-col">
-						<MotionImage
-							initial={{ opacity: 0 }}
-							whileInView={{ opacity: 1 }}
-							viewport={{ amount: 0.3, once: true }}
-							src={riskAndComplianceImage}
-							alt="Risk and Compliance Solutions"
-							className="w-127.75"
-						/>
+					<div className="mt-15 flex gap-10 max-md:flex-col lg:gap-22">
+						<div className="flex max-w-127.75 justify-center">
+							<MotionImage
+								initial={{ opacity: 0 }}
+								whileInView={{ opacity: 1 }}
+								viewport={{ amount: 0.3, once: true }}
+								src={riskAndComplianceImage}
+								alt="Risk and Compliance Solutions"
+								className="-mb-10 -ml-10 w-full object-contain"
+							/>
+						</div>
 						<div className="flex flex-1 flex-col gap-8">
 							{riskSolutions.map((solution, i) => (
 								<motion.div

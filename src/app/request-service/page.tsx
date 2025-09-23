@@ -15,14 +15,16 @@ const RequestServicePage = () => {
 				classNames={{ root: "h-162.5" }}
 				badge={true}
 			/>
-			<section
-				className="-mt-49.25 relative z-10 mx-auto max-w-230.5 bg-background px-15 py-13.75"
-				style={{
-					boxShadow: "0px 3px 8px rgba(5, 43, 139, 0.12)",
-				}}
-			>
-				<RequestServiceForm />
-			</section>
+			<div className="px-5 pb-20">
+				<section
+					className="-mt-49.25 container relative z-10 mx-auto bg-background px-4 py-8 md:max-w-230.5 md:px-15 md:py-13.75"
+					style={{
+						boxShadow: "0px 3px 8px rgba(5, 43, 139, 0.12)",
+					}}
+				>
+					<RequestServiceForm />
+				</section>
+			</div>
 			<Footer />
 		</>
 	);

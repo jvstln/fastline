@@ -63,8 +63,8 @@ function Button({
 		>
 			{isLoading ? (
 				<LoadingComp>
-					{loadingText}
 					<Loader2Icon className="animate-spin" />
+					{loadingText}
 				</LoadingComp>
 			) : (
 				children

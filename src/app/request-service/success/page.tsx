@@ -1,4 +1,5 @@
 import { ScrollTextIcon } from "lucide-react";
+import Link from "next/link";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Button } from "@/components/ui/button";
@@ -15,10 +16,15 @@ const SuccessfulRequest = () => {
 						Your request has been received. Our team will review the details and
 						contact you within 1-2 business days.
 					</p>
-					<p className="my-10 font-bold text-primary">
+					<Link
+						href="/contact#phone"
+						className="my-10 font-bold text-primary hover:underline"
+					>
 						Need urgent support? Feel free to call us directly.
-					</p>
-					<Button>Back to Home</Button>
+					</Link>
+					<Button asChild>
+						<Link href="/">Back to Home</Link>
+					</Button>
 				</div>
 			</div>
 			<Footer />

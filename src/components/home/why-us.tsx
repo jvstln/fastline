@@ -75,6 +75,7 @@ export const HomepageWhyUs = () => {
 							WHY CHOOSE FASTLINE
 						</Badge>
 					}
+					classNames={{ subtitle: "opacity-60" }}
 				/>
 
 				<div className="mt-20 grid justify-items-center gap-25 md:grid-cols-2">

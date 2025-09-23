@@ -42,10 +42,10 @@ export const contactSchema = z.object({
 
 export const requestServiceSchema = z.object({
 	name: z.string().min(2).max(30),
-	company: z.string().min(2).max(30),
+	company: z.preprocess((value) => value || undefined, z.string().min(2).max(30).optional()),
 	email: z.email(),
-	phone: z.string().length(11),
-	sector: z.string().min(2).max(30),
+	phone: z.preprocess((value) => value || undefined, z.string().length(11).optional()),
+	sector: z.preprocess((value) => value || undefined, z.string().min(2).max(30).optional()),
 	service: z.string().min(2).max(30),
 	location: z.string().min(2).max(30),
 	projectDetails: z.string().min(2).max(30),

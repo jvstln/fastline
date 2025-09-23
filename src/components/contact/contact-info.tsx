@@ -18,6 +18,7 @@ export const ContactInfo = () => {
 							viewport={appearViewport}
 							transition={{ delay: i * 0.1 }}
 							className="flex h-50 max-w-75 flex-1 shrink-0 flex-col items-center gap-3 text-center"
+							id={info.hash}
 						>
 							<info.icon className="size-11.25 rounded bg-primary/5 p-2 text-primary" />
 							<h3 className="font-bold text-primary">{info.title}</h3>
@@ -35,7 +36,7 @@ export const ContactInfo = () => {
 			{/* Socials */}
 			<div className="mx-auto my-8 max-w-87.5 text-center">
 				<h2 className="mb-4 font-bold text-lg">Connect with us</h2>
-				<div className="flex flex-wrap items-center justify-between gap-4 md:gap-8">
+				<div className="flex flex-wrap items-center justify-around gap-4 md:justify-between md:gap-8">
 					{socialLinks.map((link) => (
 						<Link
 							key={link.name}

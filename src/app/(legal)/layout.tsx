@@ -19,7 +19,7 @@ const LegalLayout = ({ children }: { children: React.ReactNode }) => {
 		<>
 			<Header mode="light" />
 			<section>
-				<div className="mb-17.5 flex flex-col items-center text-center font-bold md:mb-25">
+				<div className="mb-17.5 flex flex-col items-center gap-0.5 text-center font-bold md:mb-25">
 					<Image src={logoIcon} alt="Fastline Logo" className="size-20" />
 					<h2 className="text-primary-light text-xl md:text-2xl">
 						FASTLINE INTEGRATED SERVICES LTD.
@@ -39,7 +39,7 @@ const LegalLayout = ({ children }: { children: React.ReactNode }) => {
 										data-not-link
 										href={link.href}
 										className={cn(
-											"block py-2.5 text-center font-semibold text-xl",
+											"block py-2.5 text-center font-semibold md:text-xl",
 											isActive
 												? "border-current bg-primary-light/5 text-primary-light max-md:border-b-2 md:border-l-2"
 												: "opacity-50",
@@ -56,7 +56,7 @@ const LegalLayout = ({ children }: { children: React.ReactNode }) => {
 					<main
 						className={cn(
 							"p-8 shadow-md md:px-15 md:py-10",
-							"[&_h2]:mb-2 [&_h2]:font-bold [&_h2]:text-lg [&_p,li]:text-lg/[1.5] [&_section]:mb-10",
+							"[&_h2]:mb-2 [&_h2]:font-bold md:[&_h2]:text-lg [&_p,li]:text-[15px] md:[&_p,li]:text-lg [&_section]:mb-10",
 						)}
 						style={{
 							boxShadow: "0px 1px 8px rgba(5, 43, 139, 0.14)",

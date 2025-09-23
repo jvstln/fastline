@@ -1,16 +1,23 @@
 import { MailIcon, MapPinIcon, PhoneIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { sectors, services, socialLinks } from "@/lib/data";
+import { sectors, socialLinks } from "@/lib/data";
 import logo from "@/public/logo-light.svg";
 
 const quickLinks = [
 	{
 		title: "Our Services",
-		links: services.map((service) => ({
-			name: service.title,
-			href: service.link,
-		})),
+		links: [
+			{ name: "Security Operations", href: "/services#security-operations" },
+			{
+				name: "Risk & Compliance Solutions",
+				href: "/services#risk-and-compliance-solutions",
+			},
+			{
+				name: "Training & Capacity Building",
+				href: "/services#training-and-capacity-building",
+			},
+		],
 	},
 	{
 		title: "Industries",
