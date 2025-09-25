@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 		default: "Fastline - Professional Security & Safety Solutions",
 	},
 	description:
-		"Experts in security services, compliance audits and professional training, safeguarding assets and ensuring compliance across key sectors in Nigeria.",
+		"Fastline is an integrated Safety and Security solutions services provider with an aim to mitigate risks and develop comprehensive Safety and Security programs.",
 };
 
 export default function RootLayout({
