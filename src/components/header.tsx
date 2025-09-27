@@ -91,7 +91,7 @@ export const Header = ({
 	};
 
 	const showRequestServiceButton =
-		_showRequestServiceButton || !scrollStatus.isInView;
+		_showRequestServiceButton || !scrollStatus.isInView || pathname.startsWith('/request-service');
 
 	return (
 		<>

@@ -34,22 +34,7 @@ export const AboutCompanyOverview = () => {
 					}}
 				/>
 
-				{/* Quote */}
-				<div className="relative pr-12.5 pb-32 md:pr-22.75">
-					<div className="relative z-20 flex max-w-151.5 flex-col gap-6 rounded-sm bg-background px-8 py-12 font-semibold text-xl shadow-md md:text-2xl">
-						<QuoteIcon className="text-primary" />
-						<blockquote>
-							Committed to securing what matters most, with{" "}
-							<span className="text-primary">integrity</span>,{" "}
-							<span className="text-primary">professionalism</span>, and{" "}
-							<span className="text-primary">vigilance</span>.
-						</blockquote>
-					</div>
-					<div
-						aria-hidden
-						className="pointer-events-none absolute right-0 bottom-0 z-10 h-75 w-151.5 rounded bg-blue-100"
-					/>
-				</div>
+				<QuoteCard />
 			</div>
 
 			<div className="container mx-auto my-8 flex items-center gap-20 *:flex-1 max-lg:mt-16 max-lg:flex-col-reverse">
@@ -127,3 +112,23 @@ export const AboutCompanyOverview = () => {
 		</section>
 	);
 };
+
+export default function QuoteCard() {
+	return (
+		<div className="relative">
+			<div className="relative z-20 flex max-w-151.5 flex-col gap-6 rounded-sm bg-background px-8 py-12 font-semibold text-xl shadow-md md:text-2xl">
+				<QuoteIcon className="text-primary" />
+				<blockquote>
+					Committed to securing what matters most, with{" "}
+					<span className="text-primary">integrity</span>,{" "}
+					<span className="text-primary">professionalism</span>, and{" "}
+					<span className="text-primary">vigilance</span>.
+				</blockquote>
+			</div>
+			<div
+				aria-hidden
+				className="pointer-events-none absolute inset-0 z-10 size-full translate-x-10 translate-y-10 rounded bg-blue-100"
+			/>
+		</div>
+	);
+}
