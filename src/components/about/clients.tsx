@@ -4,14 +4,14 @@ import { useBreakpoint } from "@/hooks/use-breakpoint";
 import { sectors } from "@/lib/data";
 import { appearVariants, MotionImage } from "@/lib/motion.util";
 import { SectionHeading } from "../hero";
-import { DoubleCogIcon } from "../icons";
+import { PartnershipIcon } from "../icons";
 import { Badge } from "../ui/badge";
 
 export const AboutClients = () => {
 	const isTablet = useBreakpoint("max-md");
 
 	return (
-		<section>
+		<section id="clients">
 			<div className="container mx-auto">
 				<SectionHeading
 					title={
@@ -24,7 +24,7 @@ export const AboutClients = () => {
 						key sectors, including oil & gas, healthcare and manufacturing."
 					badge={
 						<Badge>
-							<DoubleCogIcon />
+							<PartnershipIcon />
 							Our Clients
 						</Badge>
 					}
@@ -36,7 +36,7 @@ export const AboutClients = () => {
 							<MotionImage
 								src={client.image}
 								alt={client.title}
-								className="-mb-12 mx-auto h-auto w-113.75 object-contain max-md:size-80"
+								className="mx-auto -mb-12 h-auto w-113.75 object-contain max-md:size-80"
 							/>
 						);
 						const content = (

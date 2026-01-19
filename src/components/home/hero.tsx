@@ -21,8 +21,10 @@ export const HomepageHero = () => {
 				initial={{ scale: 1.2 }}
 				animate={{ scale: 1 }}
 				alt=""
-				className="-z-10 absolute inset-0 size-full object-cover max-md:object-[75%]"
+				className="absolute inset-0 -z-10 size-full object-cover max-md:object-[75%]"
 			/>
+			{/* Overlay */}
+			<div className="absolute inset-0 -z-10 bg-black/50" />
 			<Header showRequestServiceButton={false} />
 			<div className="mt-20 px-4">
 				<motion.div
@@ -76,21 +78,26 @@ export const HomepageHero = () => {
 					</motion.div>
 
 					{/* Hero cards */}
-					<div className="grid grid-cols-[repeat(2,minmax(auto,180px))] gap-6.5 text-center max-md:mb-23.5 max-lg:justify-center max-lg:self-stretch md:grid-cols-[repeat(4,170px)] lg:grid-cols-[repeat(2,210px)] lg:gap-20">
-						{stats.map((stat, i) => (
-							<motion.div
-								initial={{ opacity: 0, scale: 0.3 }}
-								animate={{ opacity: 1, scale: 1 }}
-								transition={{ delay: 0.1 * i }}
-								key={stat.label + stat.value}
-								className="flex h-27.5 flex-col items-center justify-center gap-2 rounded-md border bg-white/5 px-2 py-8 backdrop-blur-xs lg:h-30"
-							>
-								<span className="font-bold font-michroma text-2xl">
-									{stat.value}
-								</span>
-								<span className="lg:text-lg">{stat.label}</span>
-							</motion.div>
-						))}
+					<div className="grid grid-cols-[repeat(3,minmax(auto,180px))] gap-6.5 text-center max-md:mb-23.5 max-lg:justify-center max-lg:self-stretch md:grid-cols-[repeat(3,170px)] lg:grid-cols-[repeat(2,210px)] lg:gap-20">
+						{stats.map((stat, i) => {
+							const Component = stat.link ? motion.create(Link) : motion.div;
+
+							return (
+								<Component
+									href={stat.link}
+									initial={{ opacity: 0, scale: 0.3 }}
+									animate={{ opacity: 1, scale: 1 }}
+									transition={{ delay: 0.1 * i }}
+									key={stat.label + stat.value}
+									className="flex h-27.5 w-full max-w-45 flex-col items-center justify-center gap-2 rounded-md border bg-white/5 px-2 py-8 backdrop-blur-xs hover:no-underline lg:h-30 lg:max-w-52.5 lg:last:col-span-2 lg:last:justify-self-center"
+								>
+									<span className="font-bold font-michroma text-2xl">
+										{stat.value}
+									</span>
+									<span className="lg:text-lg">{stat.label}</span>
+								</Component>
+							);
+						})}
 					</div>
 				</motion.div>
 			</div>

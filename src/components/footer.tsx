@@ -48,9 +48,8 @@ export const Footer = () => {
 							<Image src={logo} alt="Logo" />
 						</Link>
 						<p>
-							Experts in security services, compliance audits and professional
-							training, safeguarding assets and ensuring compliance across key
-							sectors in Nigeria.
+							Expert in manned security services, risk assessment, planning, and
+							security systems solutions in Nigeria.
 						</p>
 
 						{/* Location */}

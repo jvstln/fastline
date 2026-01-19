@@ -11,7 +11,7 @@ export const metadata = {
 const ContactPage = () => {
 	return (
 		<>
-			<PageHero title="Talk to us today" image="/images/contact-hero.jpg" />
+			<PageHero title="Talk to us today" image="/images/contact-hero.png" />
 			<ContactInfo />
 			<section className="container mx-auto px-4 pb-12">
 				<ContactForm />

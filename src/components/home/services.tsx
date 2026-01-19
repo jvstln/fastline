@@ -23,7 +23,7 @@ export const HomepageServices = () => {
 								That Go <span className="text-primary">Beyond Guarding</span>
 							</>
 						}
-						subtitle="From security guard services to safety trainings, we provide tailored solutions to protect your various business across multiple sectors."
+						subtitle="From security guard services to safety trainings, we provide tailored solutions to protect your various businesses across multiple sectors."
 						badge={
 							<Badge>
 								<DoubleCogIcon />
@@ -35,7 +35,7 @@ export const HomepageServices = () => {
 					<div className="mt-16 flex flex-col gap-20 lg:gap-10">
 						{homepageServices.map((service, i) => {
 							const image = (
-								<div className="mx-auto flex max-h-94 size-full max-w-113 grow justify-center">
+								<div className="mx-auto flex size-full max-h-94 max-w-113 grow justify-center">
 									<MotionImage
 										variants={appearVariants}
 										src={service.image}
@@ -88,7 +88,7 @@ export const HomepageServices = () => {
 				className="relative bg-cover text-center text-white"
 				style={{
 					background:
-						"url(/images/homepage-request-service.jpg) center center/cover no-repeat fixed",
+						"url(/images/homepage-request-service.png) top center/cover no-repeat fixed",
 				}}
 			>
 				<div className="container mx-auto flex flex-col items-center">

@@ -1,32 +1,32 @@
 "use client";
-import { ShieldPlusIcon } from "lucide-react";
+import { ShieldCheckIcon, WrenchIcon } from "lucide-react";
 import { motion, stagger } from "motion/react";
 import { useBreakpoint } from "@/hooks/use-breakpoint";
 import { appearVariants, appearViewport, MotionImage } from "@/lib/motion.util";
 import { cn } from "@/lib/utils";
-import trainingImage from "@/public/images/training-and-capacity-building-2.png";
+import securitSystemsAndEquipmentSolutions from "@/public/images/security-systems-and-equipment-solutions.png";
 import { SectionHeading } from "../hero";
-import { IedAwarenessIcon, PeopleIcon } from "../icons";
+import { DatabaseSettingsIcon, SecurityEquipmentIcon } from "../icons";
 import { Badge } from "../ui/badge";
 
 const trainings = [
 	{
-		title: "Safety Training",
+		title: "Security Equipment Procurement",
 		content:
-			"We provide customized safety training covering fire safety, first aid, emergency response, and workplace hazard prevention. These sessions ensure your staff are compliant, confident, and capable.",
-		icon: ShieldPlusIcon,
+			"We source reliable, industry-standard security equipment, including CCTV cameras, access control systems, alarms, and monitoring tools suited to your operational needs.",
+		icon: SecurityEquipmentIcon,
 	},
 	{
-		title: "Security Guard Training",
+		title: "System Installation & Configuration",
 		content:
-			"Our guard training programs cover access control, patrolling, observation, reporting, and professional conduct. We ensure each officer is field-ready and aligned with both local and international security standards.",
-		icon: PeopleIcon,
+			"Our technicians handle professional installation and setup, ensuring systems are correctly positioned, configured, and optimized for maximum effectiveness.",
+		icon: WrenchIcon,
 	},
 	{
-		title: "IED Awareness & Emergency Drills",
+		title: "System Management & Support",
 		content:
-			"We train teams on how to identify, report, and respond to suspicious devices or bomb threats. Emergency drills simulate real-world scenarios to improve response time, coordination, and crisis management.",
-		icon: IedAwarenessIcon,
+			"Ongoing system oversight, maintenance coordination, and performance checks help ensure your security equipment remains functional, reliable, and responsive over time.",
+		icon: DatabaseSettingsIcon,
 	},
 ];
 
@@ -62,14 +62,17 @@ export const TrainingAndCapacityBuilding = () => {
 						<SectionHeading
 							title={
 								<>
-									Train for{" "}
-									<span className="text-primary-light">Readiness</span>. Act
-									with <span className="text-primary-light">Confidence</span>.
+									Powered by{" "}
+									<span className="text-primary-light">Technology</span>. Driven
+									by <span className="text-primary-light">Safety</span>.
 								</>
 							}
-							subtitle="We equip your teams and ours with hands-on safety, emergency, and security training—ensuring skill, confidence, and compliance on the job."
+							subtitle="We deliver fully integrated security equipment solutions that enhance protection through expert selection, installation, and ongoing system management."
 							badge={
-								<Badge variant="secondary">Training & Capacity Building</Badge>
+								<Badge variant="secondary">
+									<ShieldCheckIcon />
+									Security Systems &amp; Equipment Solutions
+								</Badge>
 							}
 							classNames={{
 								root: "mb-13.5 lg:items-start lg:text-left",
@@ -101,7 +104,7 @@ const TrainingImage = ({
 		initial="initial"
 		whileInView="animate"
 		viewport={{ amount: 0.1 }}
-		src={trainingImage}
+		src={securitSystemsAndEquipmentSolutions}
 		alt="Training"
 		className={cn("h-146 w-134.75 rounded border-2 object-cover", className)}
 		{...props}

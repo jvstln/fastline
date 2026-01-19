@@ -30,7 +30,7 @@ export const AboutCompanyOverview = () => {
 					classNames={{
 						root: "lg:items-start lg:text-left",
 						subtitle:
-							"text-justify max-md:text-[15px]/[1.7] md:text-center lg:text-justify",
+							"text-justify opacity-80! max-md:text-[15px]/[1.7] md:text-center lg:text-justify",
 					}}
 				/>
 
@@ -68,9 +68,10 @@ export const AboutCompanyOverview = () => {
 				>
 					Our services are designed to meet the evolving security demands of
 					sectors such as oil and gas, telecommunications, finance, residential
-					estates, private properties, and commercial facilities. From guard
-					deployment to crisis response, we apply precision, integrity, and
-					industry best practices to every assignment.
+					estates, private properties, and commercial facilities. From manned
+					security and risk evaluations to security equipment deployment, we
+					apply precision, integrity, and industry best practices to every
+					assignment.
 				</motion.p>
 			</div>
 

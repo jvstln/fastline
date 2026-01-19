@@ -38,5 +38,5 @@ export const sendContactEmail = async (formData: FormData) => {
 		return { success: false, message: "Invalid form data submitted" };
 	}
 
-	return {success: true};
+	return { success: true };
 };

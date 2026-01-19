@@ -1,6 +1,7 @@
 "use client";
 import { QuoteIcon } from "lucide-react";
 import { motion } from "motion/react";
+import Link from "next/link";
 import {
 	appearVariants,
 	appearViewport,
@@ -10,7 +11,9 @@ import {
 import approachImage1 from "@/public/images/approach-1.png";
 import approachImage2 from "@/public/images/approach-2.png";
 import { SectionHeading } from "../hero";
+import { DirectionIcon } from "../icons";
 import { Badge } from "../ui/badge";
+import { Button } from "../ui/button";
 
 export const AboutApproach = () => {
 	const fadeInProps = {
@@ -29,7 +32,12 @@ export const AboutApproach = () => {
 		<section className="bg-black py-30 text-white">
 			<SectionHeading
 				title="Tailored strategies. Proven methods. Reliable outcomes"
-				badge={<Badge variant="secondary">Our Approach</Badge>}
+				badge={
+					<Badge variant="secondary">
+						<DirectionIcon />
+						Our Approach
+					</Badge>
+				}
 				classNames={{ root: "max-w-164 lg:max-w-164" }}
 			/>
 
@@ -39,12 +47,12 @@ export const AboutApproach = () => {
 					className="row-[1/2] text-center md:col-[1/3] md:row-[1/2] md:max-w-153.75 md:text-justify"
 				>
 					At Fastline, we believe effective security is never one-size-fits-all.
-					That&apos;s why our approach is rooted in careful assessment,
-					customized planning, and operational excellence. We start by
-					understanding your unique risks, facility dynamics, and compliance
-					requirements. From there, we design tailored security and safety
-					solutions, from trained personnel deployment to risk mitigation
-					strategies—aligned with your industry and environment.
+					Our approach is built on careful assessment, strategic planning, and
+					operational excellence. We begin by understanding your unique risks,
+					site dynamics, and protection needs, then deliver tailored solutions
+					through trained guard deployment, detailed security evaluations, and
+					the procurement and installation of reliable security equipment—fully
+					aligned with your industry and environment.
 				</motion.p>
 				<MotionImage
 					{...fadeInProps}
@@ -58,17 +66,23 @@ export const AboutApproach = () => {
 					className="row-[5/6] h-117.75 w-115.25 justify-self-center bg-neutral-800 object-contain md:col-[1/3] md:row-[2/4] md:justify-self-start"
 					alt="Approach"
 				/>
-				<motion.p
+				<motion.div
 					{...fadeInProps}
-					className="row-[4/5] self-end text-center md:col-[3/5] md:row-[3/4] md:max-w-146.25 md:text-justify"
+					className="row-[4/5] space-y-2 self-end text-center md:col-[3/5] md:row-[3/4] md:max-w-146.25 md:text-justify"
 				>
-					Our team works proactively not reactively, anticipating threats,
-					identifying vulnerabilities, and maintaining constant situational
-					awareness. Every officer is trained to act with discipline,
-					professionalism, and clarity under pressure. Through continuous
-					evaluation, expert oversight, and strict adherence to standards, we
-					ensure our clients experience not just security, but peace of mind.
-				</motion.p>
+					<p>
+						Our team works proactively, anticipating threats through detailed
+						security evaluations and maintaining constant situational awareness
+						on every site. Our officers operate with discipline,
+						professionalism, and clarity under pressure, supported by the right
+						security systems and equipment. Through expert oversight and strict
+						adherence to standards, we deliver not just security, but lasting
+						peace of mind.
+					</p>
+					<Button asChild>
+						<Link href="/quality-policy">Fastline Quality Policy</Link>
+					</Button>
+				</motion.div>
 
 				{/* Quote */}
 				<motion.div
@@ -82,7 +96,7 @@ export const AboutApproach = () => {
 					<blockquote>
 						We don&apos;t just respond to risks. We anticipate and neutralize
 						them <span className="text-primary-light">strategically</span> and{" "}
-						<span className="text-primary-light">professionally</span>
+						<span className="text-primary-light">professionally</span>.
 					</blockquote>
 				</motion.div>
 			</div>

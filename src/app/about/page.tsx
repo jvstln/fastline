@@ -14,7 +14,7 @@ const AboutUsPage = () => {
 		<>
 			<PageHero
 				title="About Us"
-				image="/images/about-hero.jpg"
+				image="/images/about-hero.png"
 				classNames={{ root: "h-135.75" }}
 			/>
 			<AboutCompanyOverview />

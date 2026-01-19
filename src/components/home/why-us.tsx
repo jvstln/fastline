@@ -29,7 +29,7 @@ const reasons = [
 	{
 		title: "Advanced Technology",
 		description:
-			"We deploy modern surveillance, access control, and emergency response tools to keep your people and property secure—24/7.",
+			"We deploy modern surveillance, access control, and emergency response techs to keep your people and property secure—24/7.",
 		icon: CpuIcon,
 	},
 
@@ -65,7 +65,7 @@ export const HomepageWhyUs = () => {
 							Security <span className="text-primary-light">Solutions</span>
 						</>
 					}
-					subtitle="At Fastline, we&apos;re more than service providers, we&apos;re
+					subtitle="At Fastline, we're more than service providers, we're
 						trusted partners known for delivering reliable protection, tailored
 						strategies, and a firm commitment to safer, more resilient
 						organizations across Nigeria."
@@ -75,7 +75,7 @@ export const HomepageWhyUs = () => {
 							WHY CHOOSE FASTLINE
 						</Badge>
 					}
-					classNames={{ subtitle: "opacity-60" }}
+					classNames={{ subtitle: "opacity-60!" }}
 				/>
 
 				<div className="mt-20 grid justify-items-center gap-25 md:grid-cols-2">

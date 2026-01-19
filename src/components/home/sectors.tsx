@@ -41,6 +41,8 @@ export const HomepageSectors = () => {
 							icon: Icon,
 						} = sector;
 
+						if (!iconColors || !Icon || !briefDescription) return null;
+
 						return (
 							<MotionLink
 								variants={appearVariants}

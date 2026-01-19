@@ -1,63 +1,62 @@
 "use client";
-import {
-	BiohazardIcon,
-	ListChecksIcon,
-	ShieldCheckIcon,
-	ShieldEllipsisIcon,
-	TelescopeIcon,
-} from "lucide-react";
+import { ListChecksIcon, ShieldCheckIcon, ShieldPlusIcon } from "lucide-react";
 import { motion, stagger } from "motion/react";
 import { appearVariants, appearViewport, MotionImage } from "@/lib/motion.util";
 import { cn } from "@/lib/utils";
-import monitoringImage from "@/public/images/24-7-monitoring.jpg";
-import riskAndComplianceImage from "@/public/images/risk-and-compliance-solutions-2.png";
-import securityGuardServicesImage from "@/public/images/security-guard-services.jpg";
-import securitySystemsAndEquipmentImage from "@/public/images/security-systems-and-equipment.jpg";
+import accessControlAndMobilePatrolsImage from "@/public/images/access-control-and-mobile-patrols.png";
+import securityGuardServicesImage from "@/public/images/security-guard-services.png";
+import securityGuardTrainingAndCertificationImage from "@/public/images/security-guard-training-and-certification.jpg";
+import securityRiskAssessmentAndStrategyPlanningImage from "@/public/images/security-risk-assessment-and-strategy-planning.png";
 import { SectionHeading } from "../hero";
-import { SecurityGuardIcon, TriangleSearchIcon } from "../icons";
+import {
+	GraduateShieldIcon,
+	LockedScanIcon,
+	SecurityGuardIcon,
+	TriangleSearchIcon,
+} from "../icons";
 import { Badge } from "../ui/badge";
 
 const operations = [
 	{
-		title: "Security Guard Services",
+		title: "Security Guard Deployment",
 		content:
-			"We deploy licensed, professionally trained guards to secure individuals, residential, commercial, and industrial facilities. Our personnel are disciplined, alert, and capable of handling both routine security tasks and high-risk situations with confidence.",
+			"Professionally trained and licensed guards are deployed to residential, commercial, and industrial sites. Our personnel are disciplined, alert, and equipped to handle routine security duties as well as high-risk situations with confidence.",
 		icon: SecurityGuardIcon,
 		image: securityGuardServicesImage,
 	},
 	{
-		title: "24/7 Monitoring",
+		title: "Access Control & Mobile Patrols",
 		content:
-			"Using CCTV systems, control rooms, and surveillance protocols, we monitor premises around the clock. Our monitoring teams ensure early threat detection, real-time incident reporting, and coordinated response at any hour.",
-		icon: TelescopeIcon,
-		image: monitoringImage,
+			"We manage entry and exit points while conducting routine and random patrols to deter unauthorized access and potential threats. Our teams monitor movement, enforce site protocols, and maintain a visible security presence to ensure continuous protection and rapid response across secured locations.",
+		icon: LockedScanIcon,
+		image: accessControlAndMobilePatrolsImage,
 	},
 	{
-		title: "Security Systems & Equipment",
+		title: "Security Guard Training & Certification",
 		content:
-			"We provide complete solutions for the supply, installation, and management of security systems and equipment. From CCTV cameras and access control to alarm systems and monitoring tools, our team ensures seamless setup and reliable performance to keep your facilities fully protected.",
-		icon: ShieldEllipsisIcon,
-		image: securitySystemsAndEquipmentImage,
+			"Our expert personnel offers industry-focused training that equips personnel and client teams with the knowledge and skills to act decisively in emergencies and uphold safety standards. Key programs include Safety Training, Security Guard Training, and IED Awareness & Emergency Drills.",
+		icon: GraduateShieldIcon,
+		image: securityGuardTrainingAndCertificationImage,
 	},
 ];
 
 const riskSolutions = [
 	{
-		title: "Risk Assessments",
+		title: "Vulnerability & Threat Assessments",
 		content:
 			"We evaluate your facility, operations, and surroundings to identify security gaps and safety risks. Each assessment delivers practical, prioritized recommendations to strengthen your protection strategy.",
 		icon: TriangleSearchIcon,
 	},
 	{
-		title: "Hazard & Incident Management",
+		title: "Security Planning & Advisory",
 		content:
-			"Our team develops proactive plans for hazard identification, incident investigation, and response documentation. These protocols improve readiness and ensure lessons are captured and applied.",
-		icon: BiohazardIcon,
+			"Based on assessment findings, we develop tailored security plans outlining recommended controls, personnel requirements, and response protocols aligned with your risk profile.",
+		icon: ShieldPlusIcon,
 	},
 	{
-		title: "Compliance Support",
+		title: "Compliance & Risk Mitigation Support",
 		content:
-			"We guide businesses in meeting regulatory and industry-specific safety requirements through audits, documentation, and implementation of best practices, helping you avoid penalties and downtime.",
+			"Our team supports the implementation of recommended measures to reduce risk exposure and align security practices with industry and regulatory expectations.",
 		icon: ListChecksIcon,
 	},
 ];
@@ -73,13 +72,11 @@ export const SecurityOperations = () => {
 								<span className="text-primary">Protection</span> You Can Rely On
 							</>
 						}
-						subtitle="From trained guards to 24/7 monitoring and rapid emergency response,
-							we deliver dependable, on-ground security tailored to your
-							environment."
+						subtitle="From trained guards to strict access control and security guard training, we deliver dependable, on-ground security tailored to your environment."
 						badge={
 							<Badge>
 								<ShieldCheckIcon />
-								Security Operations
+								MANNED SECURITY SERVICES
 							</Badge>
 						}
 					/>
@@ -139,7 +136,7 @@ export const SecurityOperations = () => {
 						badge={
 							<Badge>
 								<ShieldCheckIcon />
-								Risk &amp; Compliance Solutions
+								SECURITY RISK ASSESSMENT &amp; STRATEGIC PLANNING
 							</Badge>
 						}
 					/>
@@ -149,7 +146,7 @@ export const SecurityOperations = () => {
 								initial={{ opacity: 0 }}
 								whileInView={{ opacity: 1 }}
 								viewport={{ amount: 0.3, once: true }}
-								src={riskAndComplianceImage}
+								src={securityRiskAssessmentAndStrategyPlanningImage}
 								alt="Risk and Compliance Solutions"
 								className="-mb-10 -ml-10 w-full object-contain"
 							/>

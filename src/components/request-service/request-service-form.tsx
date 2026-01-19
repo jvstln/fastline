@@ -121,7 +121,11 @@ export const RequestServiceForm = () => {
 							<FormItem>
 								<FormLabel>Phone Number (Optional)</FormLabel>
 								<FormControl>
-									<Input placeholder="Enter your phone number" {...field} value={String(field.value)} />
+									<Input
+										placeholder="Enter your phone number"
+										{...field}
+										value={String(field.value)}
+									/>
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -133,7 +137,10 @@ export const RequestServiceForm = () => {
 							<FormItem>
 								<FormLabel>Industry/Sector (Optional)</FormLabel>
 								<FormControl>
-									<Select value={String(field.value)} onValueChange={field.onChange}>
+									<Select
+										value={String(field.value)}
+										onValueChange={field.onChange}
+									>
 										<FormControl>
 											<SelectTrigger>
 												<SelectValue placeholder="Select your company's industry " />

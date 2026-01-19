@@ -1,12 +1,7 @@
 "use client";
 import { motion, stagger } from "motion/react";
 import { usePathname } from "next/navigation";
-import {
-	appearVariants,
-	appearViewport,
-	MotionBadge,
-	MotionImage,
-} from "@/lib/motion.util";
+import { appearVariants, MotionBadge, MotionImage } from "@/lib/motion.util";
 import { cn } from "@/lib/utils";
 import { Header } from "./header";
 import { ShieldIcon } from "./icons";
@@ -39,7 +34,7 @@ export const PageHero = (props: PageHeroProps) => {
 				animate={{ scale: 1 }}
 				transition={{ duration: 1 }}
 				alt={props.title || ""}
-				className="-z-10 absolute inset-0 size-full object-cover"
+				className="absolute inset-0 -z-10 size-full object-cover"
 				fill
 			/>
 			<Header />
@@ -90,12 +85,12 @@ type SectionHeadingProps = {
 };
 export const SectionHeading = (props: SectionHeadingProps) => {
 	return (
-		<motion.div
-			variants={appearVariants}
-			initial="initial"
-			whileInView="animate"
-			viewport={appearViewport}
-			transition={{ delayChildren: stagger(0.1) }}
+		<div
+			// variants={appearVariants}
+			// initial="initial"
+			// whileInView="animate"
+			// viewport={appearViewport}
+			// transition={{ delayChildren: stagger(0.1) }}
 			className={cn(
 				"mx-auto flex max-w-160.5 flex-col items-center overflow-hidden text-center lg:max-w-180.5",
 				props.classNames?.root,
@@ -112,11 +107,14 @@ export const SectionHeading = (props: SectionHeadingProps) => {
 				{props.title}
 			</motion.h2>
 			<motion.p
-				variants={appearVariants}
+				variants={{
+					...appearVariants,
+					animate: { ...appearVariants, opacity: 0.6 },
+				}}
 				className={cn("opacity-60 md:text-lg", props.classNames?.subtitle)}
 			>
 				{props.subtitle}
 			</motion.p>
-		</motion.div>
+		</div>
 	);
 };
