@@ -4,21 +4,21 @@ import { Footer } from "@/components/footer";
 import { PageHero } from "@/components/hero";
 
 export const metadata = {
-	title: "Contact Us",
-	description: "Contact Fastline Integrated Services Limited",
+  title: "Contact Us",
+  description: "Contact Fastline Integrated Services Limited",
 };
 
 const ContactPage = () => {
-	return (
-		<>
-			<PageHero title="Talk to us today" image="/images/contact-hero.png" />
-			<ContactInfo />
-			<section className="container mx-auto px-4 pb-12">
-				<ContactForm />
-			</section>
-			<Footer />
-		</>
-	);
+  return (
+    <>
+      <PageHero title="Talk to us today" image="/images/contact-hero.webp" />
+      <ContactInfo />
+      <section className="container mx-auto px-4 pb-12">
+        <ContactForm />
+      </section>
+      <Footer />
+    </>
+  );
 };
 
 export default ContactPage;

@@ -5,24 +5,24 @@ import { Footer } from "@/components/footer";
 import { PageHero } from "@/components/hero";
 
 export const metadata = {
-	title: "About Us",
-	description: "About Fastline Integrated Services Limited",
+  title: "About Us",
+  description: "About Fastline Integrated Services Limited",
 };
 
 const AboutUsPage = () => {
-	return (
-		<>
-			<PageHero
-				title="About Us"
-				image="/images/about-hero.png"
-				classNames={{ root: "h-135.75" }}
-			/>
-			<AboutCompanyOverview />
-			<AboutApproach />
-			<AboutClients />
-			<Footer />
-		</>
-	);
+  return (
+    <>
+      <PageHero
+        title="About Us"
+        image="/images/about-hero.webp"
+        classNames={{ root: "h-135.75" }}
+      />
+      <AboutCompanyOverview />
+      <AboutApproach />
+      <AboutClients />
+      <Footer />
+    </>
+  );
 };
 
 export default AboutUsPage;
