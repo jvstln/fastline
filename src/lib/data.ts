@@ -122,7 +122,11 @@ export const contactInfo = [
   },
 ];
 
-export const socialLinks = [
+export const socialLinks: Array<{
+  name: string;
+  href: Route;
+  icon: LucideIcon;
+}> = [
   { name: "LinkedIn", href: "https://linkedin.com", icon: LinkedinIcon },
   { name: "X", href: "https://x.com", icon: TwitterIcon },
   { name: "Facebook", href: "https://facebook.com", icon: FacebookIcon },
