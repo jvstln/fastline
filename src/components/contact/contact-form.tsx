@@ -3,145 +3,145 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "motion/react";
 import { useForm, useFormState } from "react-hook-form";
 import { toast } from "sonner";
-import { sendContactEmail } from "@/actions/send-email";
 import { appearVariants, appearViewport } from "@/lib/motion.util";
 import { type Contact, contactSchema } from "@/lib/schema";
 import { MessageFastIcon } from "../icons";
 import { Button } from "../ui/button";
 import {
-	Form,
-	FormControl,
-	FormItem,
-	FormLabel,
-	FormMessage,
-	useFormFieldComponent,
+  Form,
+  FormControl,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  useFormFieldComponent,
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 
 export const ContactForm = () => {
-	const form = useForm({
-		resolver: zodResolver(contactSchema),
-		defaultValues: {
-			name: "",
-			email: "",
-			subject: "",
-			message: "",
-		},
-	});
+  const form = useForm({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    },
+  });
 
-	const FormField = useFormFieldComponent(form.control);
+  const FormField = useFormFieldComponent(form.control);
 
-	const handleSubmit = async (values: Contact) => {
-		const formData = new FormData();
+  const handleSubmit = async (values: Contact) => {
+    const formData = new FormData();
 
-		Object.entries(values).forEach(([key, value]) => {
-			formData.append(key, value);
-		});
+    Object.entries(values).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
 
-		const response = await sendContactEmail(formData);
+    // const response = await sendContactEmail(formData);
 
-		if (!response.success) {
-			toast.error("Error submitting request", {
-				description: response.message,
-			});
-		}
+    // if (!response.success) {
+    // 	toast.error("Error submitting request", {
+    // 		description: response.message,
+    // 	});
+    // }
 
-		toast.success("Message sent");
-	};
+    // toast.success("Message sent");
+    toast("This feature is not available at the moment");
+  };
 
-	return (
-		<Form {...form}>
-			<motion.form
-				variants={appearVariants}
-				whileInView="animate"
-				initial="initial"
-				viewport={appearViewport}
-				id={"contact-form"}
-				className="mx-auto flex max-w-2xl flex-col gap-6 p-2"
-				onSubmit={form.handleSubmit(handleSubmit)}
-			>
-				<motion.div
-					variants={appearVariants}
-					whileInView="animate"
-					initial="initial"
-					viewport={appearViewport}
-					className="mb-10 flex flex-col items-center gap-1 text-center"
-				>
-					<MessageFastIcon className="size-23 text-primary" />
-					<h2 className="font-semibold text-2xl">Contact Us</h2>
-					<p className="text-lg">
-						For further enquiries or any questions, feel free to send us a
-						message.
-					</p>
-				</motion.div>
-				<div className="flex gap-6 *:flex-1 max-sm:flex-col">
-					<FormField
-						name="name"
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel>Name</FormLabel>
-								<FormControl>
-									<Input placeholder="Enter your name" {...field} />
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					<FormField
-						name="email"
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel>Email</FormLabel>
-								<FormControl>
-									<Input placeholder="Enter your email" {...field} />
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-				</div>
-				<FormField
-					name="subject"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>Subject</FormLabel>
-							<FormControl>
-								<Input placeholder="Enter email subject" {...field} />
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
-				/>
-				<FormField
-					name="message"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>Message</FormLabel>
-							<FormControl>
-								<Textarea placeholder="Write your message" {...field} />
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
-				/>
-				<SubmitButton />
-			</motion.form>
-		</Form>
-	);
+  return (
+    <Form {...form}>
+      <motion.form
+        variants={appearVariants}
+        whileInView="animate"
+        initial="initial"
+        viewport={appearViewport}
+        id={"contact-form"}
+        className="mx-auto flex max-w-2xl flex-col gap-6 p-2"
+        onSubmit={form.handleSubmit(handleSubmit)}
+      >
+        <motion.div
+          variants={appearVariants}
+          whileInView="animate"
+          initial="initial"
+          viewport={appearViewport}
+          className="mb-10 flex flex-col items-center gap-1 text-center"
+        >
+          <MessageFastIcon className="size-23 text-primary" />
+          <h2 className="font-semibold text-2xl">Contact Us</h2>
+          <p className="text-lg">
+            For further enquiries or any questions, feel free to send us a
+            message.
+          </p>
+        </motion.div>
+        <div className="flex gap-6 *:flex-1 max-sm:flex-col">
+          <FormField
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter your name" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter your email" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+        <FormField
+          name="subject"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Subject</FormLabel>
+              <FormControl>
+                <Input placeholder="Enter email subject" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          name="message"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Message</FormLabel>
+              <FormControl>
+                <Textarea placeholder="Write your message" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <SubmitButton />
+      </motion.form>
+    </Form>
+  );
 };
 
 const SubmitButton = () => {
-	const formState = useFormState();
+  const formState = useFormState();
 
-	return (
-		<Button
-			className="w-full self-center sm:w-1/2"
-			disabled={!formState.isValid}
-			isLoading={formState.isSubmitting}
-			loadingText="Sending..."
-		>
-			Submit
-		</Button>
-	);
+  return (
+    <Button
+      className="w-full self-center sm:w-1/2"
+      disabled={!formState.isValid}
+      isLoading={formState.isSubmitting}
+      loadingText="Sending..."
+    >
+      Submit
+    </Button>
+  );
 };
